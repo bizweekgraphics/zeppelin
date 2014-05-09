@@ -4,7 +4,7 @@ $(document).ready(function() {
     var g = Math.floor(255 * Math.random())
     var b = Math.floor(255 * Math.random())
 
-    var el = $('<div class="drag-bar">drag</div>')    
+    var el = $('<div class="drag-bar"><audio controls><source src="audio/spirit1.wav" type="audio/wav">Your browser does not support the audio element.</audio></div>')    
     $('#pile').append(el)
     el.css('background', "rgb(" + r + ',' + g + ',' + b + ')')
 

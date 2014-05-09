@@ -1,6 +1,7 @@
 .drag-bar {
   margin: 1em;
-  width: 10%;
+  height: 5em;
+  width: 50%;
   color: white;
   cursor: move;
 }
@@ -14,4 +15,8 @@
 
 .drop-hover {
   background: pink;
+}
+
+audio {
+  display: none;
 }
