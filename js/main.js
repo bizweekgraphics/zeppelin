@@ -84,29 +84,82 @@ $(document).ready(function() {
 
 
   $('#submit').click(function() {
-    var audio = audioObject[1].children()[1]
+
+    var audioEl = _.find($('.drag-item'), function(elem) {
+      var elem = $(elem)
+      var margin = parseInt(elem.css('margin'))
+      var top = elem.position().top + margin
+      var left = elem.position().left + 15
+      return (top === $('.drop:eq(0)').position().top && left === $('.drop:eq(0)').position().left)
+    })
+
+
+    var audioEl2 = _.find($('.drag-item'), function(elem) {
+      var elem = $(elem)
+      var margin = parseInt(elem.css('margin'))
+      var top = elem.position().top + margin
+      var left = elem.position().left + 15.5
+      return (top === $('.drop:eq(1)').position().top && left === $('.drop:eq(1)').position().left)
+    })
+
+    var audioEl3 = _.find($('.drag-item'), function(elem) {
+      var elem = $(elem)
+      var margin = parseInt(elem.css('margin'))
+      var top = elem.position().top + margin
+      var left = elem.position().left + margin
+      return (top === $('.drop:eq(2)').position().top && left === $('.drop:eq(2)').position().left)
+    })
+
+    var audioEl4 = _.find($('.drag-item'), function(elem) {
+      var elem = $(elem)
+      var margin = parseInt(elem.css('margin'))
+      var top = elem.position().top + margin
+      var left = elem.position().left + 15.5
+      return (top === $('.drop:eq(3)').position().top && left === $('.drop:eq(3)').position().left)
+    })
+
+
+    var audio = $(audioEl).children()[1]
     audio.addEventListener('ended', function() {
-      audioObject[2].children()[1].play()
+      $(audioEl2).children()[1].play()
     })
 
-    var audio2 = audioObject[2].children()[1]
+    var audio2 = $(audioEl2).children()[1]
     audio2.addEventListener('ended', function() {
-      audioObject[3].children()[1].play()
+      $(audioEl3).children()[1].play()
     })
 
-    var audio3 = audioObject[3].children()[1]
+    var audio3 = $(audioEl3).children()[1]
     audio3.addEventListener('ended', function() {
-      audioObject[4].children()[1].play()
+      $(audioEl4).children()[1].play()
     })
 
-    var audio4 = audioObject[4].children()[1]
-    audio4.addEventListener('ended', function() {
-      if (JSON.stringify(imageObject) ===JSON.stringify(winningObject)) {
-        $('body').append('<span>YOU WIN</span>')
-      } else {
-        $('body').append('<span>YOU LOSE</span>')
-      }
-    })
+    audio.play()
+
+
+    // var audio = audioObject[1].children()[1]
+    // audio.addEventListener('ended', function() {
+    //   audioObject[2].children()[1].play()
+    // })
+
+    // var audio2 = audioObject[2].children()[1]
+    // audio2.addEventListener('ended', function() {
+    //   audioObject[3].children()[1].play()
+    // })
+
+    // var audio3 = audioObject[3].children()[1]
+    // audio3.addEventListener('ended', function() {
+    //   audioObject[4].children()[1].play()
+    // })
+
+    // var audio4 = audioObject[4].children()[1]
+    // audio4.addEventListener('ended', function() {
+    //   if (JSON.stringify(imageObject) ===JSON.stringify(winningObject)) {
+    //     $('body').append('<span>YOU WIN</span>')
+    //   } else {
+    //     $('body').append('<span>YOU LOSE</span>')
+    //   }
+    // })
   })
 
   $('#answer').click(function() {
