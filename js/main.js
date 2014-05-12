@@ -4,7 +4,7 @@ $(document).ready(function() {
     var g = Math.floor(255 * Math.random())
     var b = Math.floor(255 * Math.random())
 
-    var el = $('<div class="drag-bar"><audio controls><source src="audio/spirit' + i +'.wav" type="audio/wav">Your browser does not support the audio element.</audio></div>')    
+    var el = $('<div class="drag-item"><img src="img/spirit' + i + '.png"><audio controls><source src="audio/spirit' + i +'.wav" type="audio/wav">Your browser does not support the audio element.</audio></div>')    
     $('#pile').append(el)
 
     el.css('background', "rgb(" + r + ',' + g + ',' + b + ')')
@@ -12,14 +12,14 @@ $(document).ready(function() {
     jQuery.data(el[0], 'number', i)
 
     el.dblclick(function() { 
-      this.children[0].play()
+      this.children[1].play()
     })
 
     var dropEl = $('<div class="drop">drop</div>')
     $('#drop').append(dropEl)
   }
 
-  $('.drag-bar').draggable({
+  $('.drag-item').draggable({
     stack: '#pile div',
     // revert: true
   })
@@ -29,7 +29,7 @@ $(document).ready(function() {
     var g = Math.floor(255 * Math.random())
     var b = Math.floor(255 * Math.random())
 
-    var el = $('<div class="drag-bar"><audio controls><source src="audio/stairway' + i +'.wav" type="audio/wav">Your browser does not support the audio element.</audio></div>')    
+    var el = $('<div class="drag-item"><img src="img/stairway' + i + '.png"><audio controls><source src="audio/stairway' + i +'.wav" type="audio/wav">Your browser does not support the audio element.</audio></div>')    
     $('#pile').append(el)
 
     el.css('background', "rgb(" + r + ',' + g + ',' + b + ')')
@@ -37,14 +37,12 @@ $(document).ready(function() {
     jQuery.data(el[0], 'number', i)
 
     el.dblclick(function() { 
-      this.children[0].play()
+      this.children[1].play()
     })
 
-    var dropEl = $('<div class="drop">drop</div>')
-    $('#drop').append(dropEl)
   }
 
-  $('.drag-bar').draggable({
+  $('.drag-item').draggable({
     stack: '#pile div',
     // revert: true
   })
@@ -52,12 +50,16 @@ $(document).ready(function() {
   var dropEvent = function(event, ui) {
     console.log('test')
     ui.draggable.position( {of: $(this), my: 'left top', at: 'left top' })
+    $(this).droppable('option', 'accept', ui.draggable);
   }
 
   $('.drop').droppable({
     hoverClass: "drop-hover",
-    drop: dropEvent
-  })
+    drop: dropEvent,
+    out: function(event, ui){
+        $(this).droppable('option', 'accept', '.drag-item');
+    }   
+  });
 
 
 
