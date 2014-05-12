@@ -35,7 +35,7 @@ $(document).ready(function() {
 
   $('.drag-item').draggable({
     stack: '#pile div',
-    // revert: true
+    revert: 'invalid'
   })
 
   for(var i=1;i<5;i++) {
@@ -52,7 +52,7 @@ $(document).ready(function() {
 
   $('.drag-item').draggable({
     stack: '#pile div',
-    // revert: true
+    revert: 'invalid'
   })
 
   var dropEvent = function(event, ui) {
@@ -96,12 +96,8 @@ $(document).ready(function() {
         $('body').append('<span>YOU LOSE</span>')
       }
     })
-
-    audio.play()
   })
-
 })
-
 
 
 
