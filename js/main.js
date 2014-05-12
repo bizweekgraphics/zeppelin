@@ -1,4 +1,13 @@
-var gameObject = {}
+var audioObject = {}
+
+var imageObject = {}
+
+var winningObject = {
+  1: "img/stairway1.png",
+  2: "img/stairway2.png",
+  3: "img/stairway3.png",
+  4: "img/stairway4.png"
+}
 
 $(document).ready(function() {
 
@@ -50,7 +59,8 @@ $(document).ready(function() {
     var number = jQuery.data(this, 'number')
     ui.draggable.position( {of: $(this), my: 'left top', at: 'left top' })
     $(this).droppable('option', 'accept', ui.draggable);
-    gameObject[number] = $(ui.draggable)
+    audioObject[number] = $(ui.draggable)
+    imageObject[number] = $($(ui.draggable).first().children()[0]).attr('src')
   }
 
   $('.drop').droppable({
@@ -62,40 +72,32 @@ $(document).ready(function() {
   });
 
 
-// $('button').click(function() {
-
-// })
-
-// _.find($('.drag-item'), function(item) {
-// return item.offsetLeft === 338
-// }).children[1].play()
-
-  // $('button').click(function() {
-  //   for(var i=1; i<5; i++) {
-  //     var audio = gameObject[i].children()[1]
-  //     if(i < 4) {
-  //       audio.addEventListener('ended', function() {
-  //         debugger;
-  //         gameObject[i+1].children()[1].play()         
-  //       })      
-  //     }
-  //   }
-  // })
   $('button').click(function() {
-    var audio = gameObject[1].children()[1]
+    var audio = audioObject[1].children()[1]
     audio.addEventListener('ended', function() {
-      gameObject[2].children()[1].play()
+      audioObject[2].children()[1].play()
     })
 
-    var audio2 = gameObject[2].children()[1]
+    var audio2 = audioObject[2].children()[1]
     audio2.addEventListener('ended', function() {
-      gameObject[3].children()[1].play()
+      audioObject[3].children()[1].play()
     })
 
-    var audio3 = gameObject[3].children()[1]
+    var audio3 = audioObject[3].children()[1]
     audio3.addEventListener('ended', function() {
-      gameObject[4].children()[1].play()
+      audioObject[4].children()[1].play()
     })
+
+    var audio4 = audioObject[4].children()[1]
+    audio4.addEventListener('ended', function() {
+      if (JSON.stringify(imageObject) ===JSON.stringify(winningObject)) {
+        $('body').append('<span>YOU WIN</span>')
+      } else {
+        $('body').append('<span>YOU LOSE</span>')
+      }
+    })
+
+    audio.play()
   })
 
 })
