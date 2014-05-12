@@ -10,7 +10,6 @@ var winningObject = {
 }
 
 $(document).ready(function() {
-
   var stairwayArray = [1,2,3,4]
   stairwayArray = _.shuffle(stairwayArray)
 
@@ -21,7 +20,7 @@ $(document).ready(function() {
     var num = stairwayArray.pop()
 
     var el = $('<div class="drag-item"><img src="img/spirit' + num + '.png"><audio controls><source src="audio/spirit' + num +'.wav" type="audio/wav">Your browser does not support the audio element.</audio></div>')    
-    $('#pile').append(el)
+    $('#pile .top-row').append(el)
 
     el.dblclick(function() { 
       this.children[1].play()
@@ -42,7 +41,7 @@ $(document).ready(function() {
     var num = spiritArray.pop()
 
     var el = $('<div class="drag-item"><img src="img/stairway' + num + '.png"><audio controls><source src="audio/stairway' + num +'.wav" type="audio/wav">Your browser does not support the audio element.</audio></div>')    
-    $('#pile').append(el)
+    $('#pile .bottom-row').append(el)
 
     el.dblclick(function() { 
       this.children[1].play()
@@ -72,7 +71,7 @@ $(document).ready(function() {
   });
 
 
-  $('button').click(function() {
+  $('#submit').click(function() {
     var audio = audioObject[1].children()[1]
     audio.addEventListener('ended', function() {
       audioObject[2].children()[1].play()
@@ -97,8 +96,63 @@ $(document).ready(function() {
       }
     })
   })
-})
 
+  $('#answer').click(function() {
+    var first = _.find($('.drag-item'), function(elem) {
+      var elem = $(elem)
+      return $(elem.children()[0]).attr('src') === winningObject[1]
+    })
+    var second = _.find($('.drag-item'), function(elem) {
+      var elem = $(elem)
+      return $(elem.children()[0]).attr('src') === winningObject[2]
+    })
+    var third = _.find($('.drag-item'), function(elem) {
+      var elem = $(elem)
+      return $(elem.children()[0]).attr('src') === winningObject[3]
+    })
+    var fourth = _.find($('.drag-item'), function(elem) {
+      var elem = $(elem)
+      return $(elem.children()[0]).attr('src') === winningObject[4]
+    })
+
+    $(first).position( {
+      of: $('.drop:eq(0)'), 
+      my: 'left top', 
+      at: 'left top', 
+      using: function(css, calc) {
+        $(first).animate(css, 200, 'linear')
+      } 
+    })
+
+    $(second).position( {
+      of: $('.drop:eq(1)'), 
+      my: 'left top', 
+      at: 'left top', 
+      using: function(css, calc) {
+        $(second).animate(css, 200, 'linear')
+      } 
+    })
+
+    $(third).position( {
+      of: $('.drop:eq(2)'), 
+      my: 'left top', 
+      at: 'left top', 
+      using: function(css, calc) {
+        $(third).animate(css, 200, 'linear')
+      } 
+    })
+
+    $(fourth).position( {
+      of: $('.drop:eq(3)'), 
+      my: 'left top', 
+      at: 'left top', 
+      using: function(css, calc) {
+        $(fourth).animate(css, 200, 'linear')
+      } 
+    })
+  })
+
+})
 
 
 
