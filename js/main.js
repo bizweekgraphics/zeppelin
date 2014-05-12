@@ -34,7 +34,13 @@ $(document).ready(function() {
 
   $('.drag-item').draggable({
     stack: '#pile div',
-    revert: 'invalid'
+    revert: function(event, ui) {
+      $(this).data('uiDraggable').originalPosition = {
+        top: 0,
+        left: 0
+      }
+      return !event;
+    }
   })
 
   for(var i=1;i<5;i++) {
@@ -51,7 +57,13 @@ $(document).ready(function() {
 
   $('.drag-item').draggable({
     stack: '#pile div',
-    revert: 'invalid'
+    revert: function(event, ui) {
+      $(this).data('uiDraggable').originalPosition = {
+        top: 0,
+        left: 0
+      }
+      return !event;
+    }
   })
 
   var dropEvent = function(event, ui) {
@@ -151,6 +163,17 @@ $(document).ready(function() {
       } 
     })
   })
+
+  $('.drop').data('left', $('.drop').position().left).data('top', $('.drop').position().top)
+
+  $('#reset').click(function() {
+    $('.drag-item').animate({
+      'left': $('.drag-item').data('left'),
+      'top': $('.drag-item').data('top')
+    })
+  })
+
+  $('.drag-item').data('left', 0).data('top', 0)
 
 })
 
