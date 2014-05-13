@@ -85,37 +85,19 @@ $(document).ready(function() {
 
   $('#submit').click(function() {
 
-    var audioEl = _.find($('.drag-item'), function(elem) {
-      var elem = $(elem)
-      // var margin = parseInt(elem.css('margin'))
-      var top = Math.round(elem.position().top)
-      var left = Math.round(elem.position().left)
-      return (top === Math.round($('.drop:eq(0)').position().top) && left === Math.round($('.drop:eq(0)').position().left))
-    })
+    var findAudioEl = function(number) {
+      return _.find($('.drag-item'), function(elem) {
+          var elem = $(elem)
+          var top = Math.round(elem.position().top)
+          var left = Math.round(elem.position().left)
+          return (top === Math.round($('.drop:eq(' + number + ')').position().top) && left === Math.round($('.drop:eq(' + number + ')').position().left))
+      })
+    }
 
-    var audioEl2 = _.find($('.drag-item'), function(elem) {
-      var elem = $(elem)
-      // var margin = parseInt(elem.css('margin'))
-      var top = Math.round(elem.position().top)
-      var left = Math.round(elem.position().left)
-      return (top === Math.round($('.drop:eq(1)').position().top) && left === Math.round($('.drop:eq(1)').position().left))
-    })
-
-    var audioEl3 = _.find($('.drag-item'), function(elem) {
-      var elem = $(elem)
-      // var margin = parseInt(elem.css('margin'))
-      var top = Math.round(elem.position().top)
-      var left = Math.round(elem.position().left)
-      return (top === Math.round($('.drop:eq(2)').position().top) && left === Math.round($('.drop:eq(2)').position().left))
-    })
-
-    var audioEl4 = _.find($('.drag-item'), function(elem) {
-      var elem = $(elem)
-      // var margin = parseInt(elem.css('margin'))
-      var top = Math.round(elem.position().top)
-      var left = Math.round(elem.position().left)
-      return (top === Math.round($('.drop:eq(3)').position().top) && left === Math.round($('.drop:eq(3)').position().left))
-    })
+    var audioEl = findAudioEl(0)
+    var audioEl2 = findAudioEl(1)
+    var audioEl3 = findAudioEl(2)
+    var audioEl4 = findAudioEl(3)
 
     var cloneAudio = function(node) {
       var oldElement = node
@@ -160,85 +142,33 @@ $(document).ready(function() {
     $('.drop').css('maring', '0em')
 
     audio.play()
-
-
-    // var audio = audioObject[1].children()[1]
-    // audio.addEventListener('ended', function() {
-    //   audioObject[2].children()[1].play()
-    // })
-
-    // var audio2 = audioObject[2].children()[1]
-    // audio2.addEventListener('ended', function() {
-    //   audioObject[3].children()[1].play()
-    // })
-
-    // var audio3 = audioObject[3].children()[1]
-    // audio3.addEventListener('ended', function() {
-    //   audioObject[4].children()[1].play()
-    // })
-
-    // var audio4 = audioObject[4].children()[1]
-    // audio4.addEventListener('ended', function() {
-    //   if (JSON.stringify(imageObject) ===JSON.stringify(winningObject)) {
-    //     $('body').append('<span>YOU WIN</span>')
-    //   } else {
-    //     $('body').append('<span>YOU LOSE</span>')
-    //   }
-    // })
   })
 
   $('#answer').click(function() {
-    var first = _.find($('.drag-item'), function(elem) {
-      var elem = $(elem)
-      return $(elem.children()[0]).attr('src') === winningObject[1]
-    })
-    var second = _.find($('.drag-item'), function(elem) {
-      var elem = $(elem)
-      return $(elem.children()[0]).attr('src') === winningObject[2]
-    })
-    var third = _.find($('.drag-item'), function(elem) {
-      var elem = $(elem)
-      return $(elem.children()[0]).attr('src') === winningObject[3]
-    })
-    var fourth = _.find($('.drag-item'), function(elem) {
-      var elem = $(elem)
-      return $(elem.children()[0]).attr('src') === winningObject[4]
-    })
 
-    $(first).position( {
-      of: $('.drop:eq(0)'), 
-      my: 'left top', 
-      at: 'left top', 
-      using: function(css, calc) {
-        $(first).animate(css, 200, 'linear')
-      } 
-    })
+    var findElem = function(number) {
+      return _.find($('.drag-item'), function(elem) {
+        var elem = $(elem)
+        return $(elem.children()[0]).attr('src') === winningObject[number]
+      })
+    }
 
-    $(second).position( {
-      of: $('.drop:eq(1)'), 
-      my: 'left top', 
-      at: 'left top', 
-      using: function(css, calc) {
-        $(second).animate(css, 200, 'linear')
-      } 
-    })
+    var first = findElem(1)
+    var second = findElem(2)
+    var third = findElem(3)
+    var fourth = findElem(4)
 
-    $(third).position( {
-      of: $('.drop:eq(2)'), 
-      my: 'left top', 
-      at: 'left top', 
-      using: function(css, calc) {
-        $(third).animate(css, 200, 'linear')
-      } 
-    })
+    var elemArray = [first, second, third, fourth]
 
-    $(fourth).position( {
-      of: $('.drop:eq(3)'), 
-      my: 'left top', 
-      at: 'left top', 
-      using: function(css, calc) {
-        $(fourth).animate(css, 200, 'linear')
-      } 
+    elemArray.forEach(function(elem, index) {
+      $(elem).position({
+        of: $('.drop:eq(' + index + ')'), 
+        my: 'left top', 
+        at: 'left top', 
+        using: function(css, calc) {
+        $(elem).animate(css, 200, 'linear')
+        }
+      })      
     })
   })
 
