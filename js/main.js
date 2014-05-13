@@ -74,13 +74,17 @@ $(document).ready(function() {
   });
 
   var findAudioEl = function(number) {
-    return _.find($('.drag-item'), function(elem) {
-        var elem = $(elem)
-        var margin = parseInt(elem.css('margin'))
-        var top = Math.round(elem.position().top) + margin
-        var left = Math.round(elem.position().left) + margin
-        return (top === Math.round($('.drop:eq(' + number + ')').position().top) && left === Math.round($('.drop:eq(' + number + ')').position().left))
-    })
+    try {
+      return _.find($('.drag-item'), function(elem) {
+          var elem = $(elem)
+          var margin = parseInt(elem.css('margin'))
+          var top = Math.round(elem.position().top) + margin
+          var left = Math.round(elem.position().left) + margin
+          return (top === Math.round($('.drop:eq(' + number + ')').position().top) && left === Math.round($('.drop:eq(' + number + ')').position().left))
+      })
+    } catch(e) {
+      return undefined
+    }
   }
 
 
@@ -116,21 +120,27 @@ $(document).ready(function() {
     })
 
     var audio2 = $(audioEl2).children()[1]
-    audio2.addEventListener('ended', function() {
-      $(audioEl3).children()[1].play()
-      cloneAudio($(audio2)[0])
-    })
+    if(audio2){
+      audio2.addEventListener('ended', function() {
+        $(audioEl3).children()[1].play()
+        cloneAudio($(audio2)[0])
+      })      
+    }
 
     var audio3 = $(audioEl3).children()[1]
-    audio3.addEventListener('ended', function() {
-      $(audioEl4).children()[1].play()
-      cloneAudio($(audio3)[0])  
-    })
+    if(audio3) {
+      audio3.addEventListener('ended', function() {
+        $(audioEl4).children()[1].play()
+        cloneAudio($(audio3)[0])  
+      })
+    }
 
     var audio4 = $(audioEl4).children()[1]
-    audio4.addEventListener('ended', function() {
-      cloneAudio($(audio4)[0])     
-    })
+    if(audio4) {
+      audio4.addEventListener('ended', function() {
+        cloneAudio($(audio4)[0])     
+      })      
+    }
 
     $(audioEl).children()[1].play()
   })
