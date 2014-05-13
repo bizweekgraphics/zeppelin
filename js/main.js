@@ -225,11 +225,13 @@ var createGame = function(difficulty) {
   })
 
   $('.drag-item').data('left', 0).data('top', 0)
+
+  $('#newgame').click(function() {
+    newGame()
+})
 }
 
-$('#newgame').click(function() {
-  newGame()
-})
+
 
 var newGame = function() {
   $('.game-wrapper').remove()
