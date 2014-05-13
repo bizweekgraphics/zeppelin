@@ -17,7 +17,7 @@ body {
 
 .drop {
   display: inline-block;
-  padding: 1em;
+  /*padding: 1em;*/
   margin: 1em;
   width: 15%;
   height: 130px;

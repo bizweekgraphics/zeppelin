@@ -117,20 +117,28 @@ $(document).ready(function() {
       return (top === Math.round($('.drop:eq(3)').position().top) && left === Math.round($('.drop:eq(3)').position().left))
     })
 
+    var cloneAudio = function(node) {
+      var oldElement = node
+      var newElement = oldElement.cloneNode(true)
+      oldElement.parentNode.replaceChild(newElement, oldElement)
+    }
 
     var audio = $(audioEl).children()[1]
     audio.addEventListener('ended', function() {
       $(audioEl2).children()[1].play()
+      cloneAudio($(audio)[0])
     })
 
     var audio2 = $(audioEl2).children()[1]
     audio2.addEventListener('ended', function() {
       $(audioEl3).children()[1].play()
+      cloneAudio($(audio2)[0])
     })
 
     var audio3 = $(audioEl3).children()[1]
     audio3.addEventListener('ended', function() {
       $(audioEl4).children()[1].play()
+      cloneAudio($(audio3)[0])  
     })
 
     var audio4 = $(audioEl4).children()[1]
@@ -146,7 +154,10 @@ $(document).ready(function() {
       } else {
         alert('You lose!')
       }
+      cloneAudio($(audio4)[0])     
     })
+
+    $('.drop').css('maring', '0em')
 
     audio.play()
 
