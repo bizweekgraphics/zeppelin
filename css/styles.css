@@ -5,7 +5,7 @@ src: url(../fonts/kashimir.ttf);
 }
 
 body {
-  background: #dfe9d7;
+  background: #f5f5e2;
 }
 
 .wrapper {
@@ -70,8 +70,9 @@ p {
   display: inline-block;
   width: 194px;
   height: 174px;
-  background: lightgrey;
+  background: black;
   text-align: center;
+  color: white;
 }
 
 .row {
@@ -95,8 +96,8 @@ audio {
 }
 
 img {
-  width: 100%;
-  height: auto;
+  width: 194px;
+  height: 174px;
 }
 
 .game-button {
@@ -111,4 +112,13 @@ img {
   background: black;
   color: white;
   font-size: 1em;
+  -webkit-transition: all .25s ease-in-out;
+  -moz-transition: all .25s ease-in-out;
+  -ms-transition: all .25s ease-in-out;
+  -o-transition: all .25s ease-in-out;
+  transition: all .25s ease-in-out;
+}
+
+.game-button button:hover {
+  opacity: .5;
 }

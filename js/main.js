@@ -227,6 +227,18 @@ var createGame = function(difficulty) {
   $('.drag-item').data('left', 0).data('top', 0)
 }
 
+$('#newgame').click(function() {
+  newGame()
+})
+
+var newGame = function() {
+  $('.game-wrapper').remove()
+  $('.difficulty').css('display', 'block')
+
+  var template = '<div class="game-wrapper style="display:none"><p>4 measures are from Stairway to Heaven, 4 are from Spirit. Identify the 4 measures from Stairway and drag them into the drop boxes in the right order</p><p id="listen">Double click image to listen to measure</p><div id="pile"><div class="row top-row"></div><div class="row bottom-row"></div></div><div id="drop" class="content"></div><div class="game-button"><button id="submit">Submit</button><button id="play">Play</button><button id="answer">Show Answer</button><button id="reset">Reset</button><button id="newgame">New Game</button></div></div></div>'
+
+  $('body').append(template)
+}
 
   
 
