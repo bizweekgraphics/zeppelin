@@ -89,7 +89,7 @@ $(document).ready(function() {
       var elem = $(elem)
       var margin = parseInt(elem.css('margin'))
       var top = elem.position().top + margin
-      var left = elem.position().left + 15
+      var left = elem.position().left + margin
       return (top === $('.drop:eq(0)').position().top && left === $('.drop:eq(0)').position().left)
     })
 
@@ -122,6 +122,7 @@ $(document).ready(function() {
     var audio = $(audioEl).children()[1]
     audio.addEventListener('ended', function() {
       $(audioEl2).children()[1].play()
+      audio.removeEventListener('click', listener, false);
     })
 
     var audio2 = $(audioEl2).children()[1]
