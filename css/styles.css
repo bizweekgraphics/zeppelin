@@ -20,6 +20,7 @@ body {
   width: 194px;
   height: 174px;
   background: lightgrey;
+  text-align: center;
 }
 
 .drop-hover {

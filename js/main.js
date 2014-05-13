@@ -23,7 +23,7 @@ $(document).ready(function() {
       this.children[1].play()
     })
 
-    var dropEl = $('<div class="drop">drop</div>')
+    var dropEl = $('<div class="drop">Drop here</div>')
     $('#drop').append(dropEl)
 
     jQuery.data(dropEl[0], 'number', i)
