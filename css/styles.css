@@ -11,8 +11,14 @@ body {
   cursor: move;
 }
 
+#drop {
+  margin-left: 2em;
+}
+
 .drop {
   display: inline-block;
+  padding: 1em;
+  margin: 1em;
   width: 15%;
   height: 130px;
   /*margin: 1em;*/

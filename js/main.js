@@ -87,42 +87,40 @@ $(document).ready(function() {
 
     var audioEl = _.find($('.drag-item'), function(elem) {
       var elem = $(elem)
-      var margin = parseInt(elem.css('margin'))
-      var top = elem.position().top + margin
-      var left = elem.position().left + margin
-      return (top === $('.drop:eq(0)').position().top && left === $('.drop:eq(0)').position().left)
+      // var margin = parseInt(elem.css('margin'))
+      var top = Math.round(elem.position().top)
+      var left = Math.round(elem.position().left)
+      return (top === Math.round($('.drop:eq(0)').position().top) && left === Math.round($('.drop:eq(0)').position().left))
     })
-
 
     var audioEl2 = _.find($('.drag-item'), function(elem) {
       var elem = $(elem)
-      var margin = parseInt(elem.css('margin'))
-      var top = elem.position().top + margin
-      var left = elem.position().left + 15.5
-      return (top === $('.drop:eq(1)').position().top && left === $('.drop:eq(1)').position().left)
+      // var margin = parseInt(elem.css('margin'))
+      var top = Math.round(elem.position().top)
+      var left = Math.round(elem.position().left)
+      return (top === Math.round($('.drop:eq(1)').position().top) && left === Math.round($('.drop:eq(1)').position().left))
     })
 
     var audioEl3 = _.find($('.drag-item'), function(elem) {
       var elem = $(elem)
-      var margin = parseInt(elem.css('margin'))
-      var top = elem.position().top + margin
-      var left = elem.position().left + margin
-      return (top === $('.drop:eq(2)').position().top && left === $('.drop:eq(2)').position().left)
+      // var margin = parseInt(elem.css('margin'))
+      var top = Math.round(elem.position().top)
+      var left = Math.round(elem.position().left)
+      return (top === Math.round($('.drop:eq(2)').position().top) && left === Math.round($('.drop:eq(2)').position().left))
     })
 
     var audioEl4 = _.find($('.drag-item'), function(elem) {
       var elem = $(elem)
-      var margin = parseInt(elem.css('margin'))
-      var top = elem.position().top + margin
-      var left = elem.position().left + 15.5
-      return (top === $('.drop:eq(3)').position().top && left === $('.drop:eq(3)').position().left)
+      // var margin = parseInt(elem.css('margin'))
+      var top = Math.round(elem.position().top)
+      var left = Math.round(elem.position().left)
+      return (top === Math.round($('.drop:eq(3)').position().top) && left === Math.round($('.drop:eq(3)').position().left))
     })
 
 
     var audio = $(audioEl).children()[1]
     audio.addEventListener('ended', function() {
       $(audioEl2).children()[1].play()
-      audio.removeEventListener('click', listener, false);
     })
 
     var audio2 = $(audioEl2).children()[1]
@@ -133,6 +131,21 @@ $(document).ready(function() {
     var audio3 = $(audioEl3).children()[1]
     audio3.addEventListener('ended', function() {
       $(audioEl4).children()[1].play()
+    })
+
+    var audio4 = $(audioEl4).children()[1]
+    audio4.addEventListener('ended', function() {
+      checkObject = {
+        1: $(audioEl).children().attr('src'),
+        2: $(audioEl2).children().attr('src'),
+        3: $(audioEl3).children().attr('src'),
+        4: $(audioEl4).children().attr('src')
+      }
+      if (JSON.stringify(checkObject) === JSON.stringify(winningObject)) {
+        alert('You win!')
+      } else {
+        alert('You lose!')
+      }
     })
 
     audio.play()
