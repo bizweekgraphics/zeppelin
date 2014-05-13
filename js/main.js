@@ -1,7 +1,3 @@
-var audioObject = {}
-
-var imageObject = {}
-
 var winningObject = {
   1: "img/stairway1.png",
   2: "img/stairway2.png",
@@ -67,8 +63,6 @@ $(document).ready(function() {
     var number = jQuery.data(this, 'number')
     ui.draggable.position( {of: $(this), my: 'left top', at: 'left top' })
     $(this).droppable('option', 'accept', ui.draggable);
-    audioObject[number] = $(ui.draggable)
-    imageObject[number] = $($(ui.draggable).first().children()[0]).attr('src')
   }
 
   $('.drop').droppable({
@@ -79,18 +73,18 @@ $(document).ready(function() {
     }   
   });
 
+  var findAudioEl = function(number) {
+    return _.find($('.drag-item'), function(elem) {
+        var elem = $(elem)
+        var margin = parseInt(elem.css('margin'))
+        var top = Math.round(elem.position().top) + margin
+        var left = Math.round(elem.position().left) + margin
+        return (top === Math.round($('.drop:eq(' + number + ')').position().top) && left === Math.round($('.drop:eq(' + number + ')').position().left))
+    })
+  }
 
-  $('#submit').click(function() {
 
-    var findAudioEl = function(number) {
-      return _.find($('.drag-item'), function(elem) {
-          var elem = $(elem)
-          var margin = parseInt(elem.css('margin'))
-          var top = Math.round(elem.position().top) + margin
-          var left = Math.round(elem.position().left) + margin
-          return (top === Math.round($('.drop:eq(' + number + ')').position().top) && left === Math.round($('.drop:eq(' + number + ')').position().left))
-      })
-    }
+  $('#play').click(function() {
 
     var audioEl = findAudioEl(0)
     var audioEl2 = findAudioEl(1)
@@ -135,24 +129,34 @@ $(document).ready(function() {
 
     var audio4 = $(audioEl4).children()[1]
     audio4.addEventListener('ended', function() {
-      checkObject = {
-        1: $(audioEl).children().attr('src'),
-        2: $(audioEl2).children().attr('src'),
-        3: $(audioEl3).children().attr('src'),
-        4: $(audioEl4).children().attr('src')
-      }
-      if (JSON.stringify(checkObject) === JSON.stringify(winningObject)) {
-        alert('You win!')
-      } else {
-        alert('You lose!')
-      }
       cloneAudio($(audio4)[0])     
     })
 
     $(audioEl).children()[1].play()
   })
 
+  $('#submit').click(function() {
+    var audioEl = findAudioEl(0)
+    var audioEl2 = findAudioEl(1)
+    var audioEl3 = findAudioEl(2)
+    var audioEl4 = findAudioEl(3)
+
+    checkObject = {
+      1: $(audioEl).children().attr('src'),
+      2: $(audioEl2).children().attr('src'),
+      3: $(audioEl3).children().attr('src'),
+      4: $(audioEl4).children().attr('src')
+    }
+    if (JSON.stringify(checkObject) === JSON.stringify(winningObject)) {
+      alert('You win!')
+    } else {
+      alert('You lose!')
+    }
+  })
+
   $('#answer').click(function() {
+
+    reset()
 
     var findElem = function(number) {
       return _.find($('.drag-item'), function(elem) {
@@ -182,12 +186,16 @@ $(document).ready(function() {
 
   $('.drop').data('left', $('.drop').position().left).data('top', $('.drop').position().top)
 
-  $('#reset').click(function() {
+  var reset = function() {
     $('.drag-item').animate({
       'left': $('.drag-item').data('left'),
       'top': $('.drag-item').data('top')
     })
     $('.drop').droppable('option', 'accept', '.drag-item')
+  }
+
+  $('#reset').click(function() {
+    reset()
   })
 
   $('.drag-item').data('left', 0).data('top', 0)
