@@ -6,7 +6,7 @@ body {
   display: inline-block;
   margin: 1em;
   height: 5em;
-  width: 15%;
+  width: 20%;
   color: white;
   cursor: move;
 }
@@ -17,11 +17,8 @@ body {
 
 .drop {
   display: inline-block;
-  /*padding: 1em;*/
-  margin: 1em;
-  width: 15%;
-  height: 130px;
-  /*margin: 1em;*/
+  width: 194px;
+  height: 174px;
   background: lightgrey;
 }
 

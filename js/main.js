@@ -10,16 +10,13 @@ var winningObject = {
 }
 
 $(document).ready(function() {
-  var stairwayArray = [1,2,3,4]
-  stairwayArray = _.shuffle(stairwayArray)
-
-  var spiritArray = [1,2,3,4]
-  spiritArray = _.shuffle(spiritArray)
+  var measureArray = ['stairway1', 'stairway2', 'stairway3', 'stairway4', 'spirit1', 'spirit2', 'spirit3', 'spirit4']
+  var measureArray = _.shuffle(measureArray)
 
   for(var i=1;i<5;i++) {
-    var num = stairwayArray.pop()
+    var measure = measureArray.pop()
 
-    var el = $('<div class="drag-item"><img src="img/spirit' + num + '.png"><audio controls><source src="audio/spirit' + num +'.wav" type="audio/wav">Your browser does not support the audio element.</audio></div>')    
+    var el = $('<div class="drag-item"><img src="img/' + measure + '.png"><audio controls><source src="audio/' + measure +'.wav" type="audio/wav">Your browser does not support the audio element.</audio></div>')    
     $('#pile .top-row').append(el)
 
     el.dblclick(function() { 
@@ -44,9 +41,9 @@ $(document).ready(function() {
   })
 
   for(var i=1;i<5;i++) {
-    var num = spiritArray.pop()
+    var measure = measureArray.pop()
 
-    var el = $('<div class="drag-item"><img src="img/stairway' + num + '.png"><audio controls><source src="audio/stairway' + num +'.wav" type="audio/wav">Your browser does not support the audio element.</audio></div>')    
+    var el = $('<div class="drag-item"><img src="img/' + measure + '.png"><audio controls><source src="audio/' + measure +'.wav" type="audio/wav">Your browser does not support the audio element.</audio></div>')    
     $('#pile .bottom-row').append(el)
 
     el.dblclick(function() { 
@@ -88,8 +85,9 @@ $(document).ready(function() {
     var findAudioEl = function(number) {
       return _.find($('.drag-item'), function(elem) {
           var elem = $(elem)
-          var top = Math.round(elem.position().top)
-          var left = Math.round(elem.position().left)
+          var margin = parseInt(elem.css('margin'))
+          var top = Math.round(elem.position().top) + margin
+          var left = Math.round(elem.position().left) + margin
           return (top === Math.round($('.drop:eq(' + number + ')').position().top) && left === Math.round($('.drop:eq(' + number + ')').position().left))
       })
     }
@@ -104,6 +102,18 @@ $(document).ready(function() {
       var newElement = oldElement.cloneNode(true)
       oldElement.parentNode.replaceChild(newElement, oldElement)
     }
+
+    // var setAudioListener = function(elem, elem2) {
+    //   var audio = $(elem).children()[1]
+    //   audio.addEventListener('ended', function() {
+    //     $(elem2).children()[1].play()
+    //     cloneAudio($(elem)[0])
+    //   })
+    // }
+
+    // setAudioListener(audioEl, audioEl2)
+    // setAudioListener(audioEl2, audioEl3)
+    // setAudioListener(audioEl3, audioEl4)
 
     var audio = $(audioEl).children()[1]
     audio.addEventListener('ended', function() {
@@ -139,9 +149,7 @@ $(document).ready(function() {
       cloneAudio($(audio4)[0])     
     })
 
-    $('.drop').css('maring', '0em')
-
-    audio.play()
+    $(audioEl).children()[1].play()
   })
 
   $('#answer').click(function() {
