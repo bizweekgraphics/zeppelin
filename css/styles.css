@@ -28,6 +28,16 @@ body {
   font-family: 'kashimir';
   color: white;
   background: black;
+  -webkit-transition: all .25s ease-in-out;
+  -moz-transition: all .25s ease-in-out;
+  -ms-transition: all .25s ease-in-out;
+  -o-transition: all .25s ease-in-out;
+  transition: all .25s ease-in-out;
+}
+
+
+.difficulty:first-child {
+  margin-top: 2em;
 }
 
 .difficulty:hover {
@@ -45,7 +55,10 @@ body {
 }
 
 #drop {
-  margin-left: 2em;
+  display: block;
+  margin: 0 auto;
+  width: 970px;
+  text-align: center;
 }
 
 .drop {
@@ -53,6 +66,10 @@ body {
   width: 194px;
   height: 174px;
   background: lightgrey;
+  text-align: center;
+}
+
+.row {
   text-align: center;
 }
 
@@ -68,7 +85,6 @@ body {
   background: lightgreen;
 }
 
-
 audio {
   display: none;
 }
@@ -78,3 +94,8 @@ img {
   height: auto;
 }
 
+.game-button {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}

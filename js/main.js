@@ -9,21 +9,21 @@ $(document).ready(function() {
   var difficulty;
 
   $('#easy').click(function() {
-    $('.game-wrapper').css('display', 'block')
+    $('.game-wrapper').fadeIn('slow')
     $('.difficulty').css('display', 'none')
     difficulty = 'easy'
     createGame(difficulty)
   })
 
   $('#medium').click(function() {
-    $('.game-wrapper').css('display', 'block')
+    $('.game-wrapper').fadeIn('slow')
     $('.difficulty').css('display', 'none')
     difficulty = 'medium'
     createGame(difficulty)
   })
 
   $('#hard').click(function() {
-    $('.game-wrapper').css('display', 'block')
+    $('.game-wrapper').fadeIn('slow')
     $('.difficulty').css('display', 'none')
     $('#play').css('display', 'none')
     $('#listen').css('display', 'none')
