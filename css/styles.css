@@ -1,11 +1,38 @@
+@font-face
+{
+font-family: kashimir;
+src: url(../fonts/kashimir.ttf);
+}
+
 body {
   background: #f6ea9c;
 }
 
+.wrapper {
+  width: 970px;
+}
+
 
 .game-wrapper {
-  width: 970px;
   display: none;
+}
+
+.difficulty {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 2em;
+  border: none;
+  width: 15%;
+  font-size: 1.5em;
+  padding: .5em 1em .5em 1em;
+  font-family: 'kashimir';
+  color: white;
+  background: black;
+}
+
+.difficulty:hover {
+  opacity: .5;
+  cursor: pointer;
 }
 
 .drag-item {

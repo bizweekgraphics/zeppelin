@@ -210,6 +210,9 @@ var createGame = function(difficulty) {
   $('.drop').data('left', $('.drop').position().left).data('top', $('.drop').position().top)
 
   var reset = function() {
+    if(difficulty === 'easy') {
+      $('.drop').removeClass('drop-hover-easy')
+    }
     $('.drag-item').animate({
       'left': $('.drag-item').data('left'),
       'top': $('.drag-item').data('top')
