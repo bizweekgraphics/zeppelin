@@ -36,11 +36,16 @@ var createGame = function(difficulty) {
   var measureArray = ['stairway1', 'stairway2', 'stairway3', 'stairway4', 'spirit1', 'spirit2', 'spirit3', 'spirit4']
   var measureArray = _.shuffle(measureArray)
 
-  for(var i=1;i<5;i++) {
+  for(var i=1;i<9;i++) {
     var measure = measureArray.pop()
+    if(i<5){
+      var appendEl = $('#pile .top-row')
+    } else {
+      var appendEl = $('#pile .bottom-row')
+    }
 
     var el = $('<div class="drag-item"><img src="img/' + measure + '.png"><audio controls><source src="audio/' + measure +'.wav" type="audio/wav">Your browser does not support the audio element.</audio></div>')    
-    $('#pile .top-row').append(el)
+    $(appendEl).append(el)
 
     el.data('measure', measure)
 
@@ -49,39 +54,12 @@ var createGame = function(difficulty) {
         this.children[1].play()
       })      
     }
-
-    var dropEl = $('<div class="drop">Drop here</div>')
-    dropEl.data('measure', 'stairway' + i)
-    $('#drop').append(dropEl)
-
   }
 
-  $('.drag-item').draggable({
-    stack: '#pile div',
-    revert: function(event, ui) {
-      $(this).data('uiDraggable').originalPosition = {
-        top: 0,
-        left: 0
-      }
-      return !event;
-    }
-  })
-
-  for(var i=1;i<5;i++) {
-    var measure = measureArray.pop()
-
-    var el = $('<div class="drag-item"><img src="img/' + measure + '.png"><audio controls><source src="audio/' + measure +'.wav" type="audio/wav">Your browser does not support the audio element.</audio></div>')    
-    $('#pile .bottom-row').append(el)
-
-    el.data('measure', measure)
-
-
-    if(difficulty !='hard'){
-      el.dblclick(function() { 
-        this.children[1].play()
-      })      
-    }
-
+  for(var i=1; i < 5; i++){
+    var dropEl = $('<div class="drop">Drop here</div>')
+    dropEl.data('measure', 'stairway' + i)
+    $('#drop').append(dropEl)    
   }
 
   $('.drag-item').draggable({
@@ -128,8 +106,6 @@ var createGame = function(difficulty) {
       }   
     })
   }
-
-
 
   var findAudioEl = function(number) {
     try {
