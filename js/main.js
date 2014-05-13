@@ -249,6 +249,7 @@ $(document).ready(function() {
       'left': $('.drag-item').data('left'),
       'top': $('.drag-item').data('top')
     })
+    $('.drop').droppable('option', 'accept', '.drag-item')
   })
 
   $('.drag-item').data('left', 0).data('top', 0)
