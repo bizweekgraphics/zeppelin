@@ -135,45 +135,24 @@ var createGame = function(difficulty) {
       oldElement.parentNode.replaceChild(newElement, oldElement)
     }
 
-    // var setAudioListener = function(elem, elem2) {
-    //   var audio = $(elem).children()[1]
-    //   audio.addEventListener('ended', function() {
-    //     $(elem2).children()[1].play()
-    //     cloneAudio($(elem)[0])
-    //   })
-    // }
-
-    // setAudioListener(audioEl, audioEl2)
-    // setAudioListener(audioEl2, audioEl3)
-    // setAudioListener(audioEl3, audioEl4)
-
-    var audio = $(audioEl).children()[1]
-    audio.addEventListener('ended', function() {
-      $(audioEl2).children()[1].play()
-      cloneAudio($(audio)[0])
-    })
-
-    var audio2 = $(audioEl2).children()[1]
-    if(audio2){
-      audio2.addEventListener('ended', function() {
-        $(audioEl3).children()[1].play()
-        cloneAudio($(audio2)[0])
-      })      
-    }
-
-    var audio3 = $(audioEl3).children()[1]
-    if(audio3) {
-      audio3.addEventListener('ended', function() {
-        $(audioEl4).children()[1].play()
-        cloneAudio($(audio3)[0])  
+    var setAudioListener = function(elem, elem2) {
+      var audio = $(elem).children()[1]
+      audio.addEventListener('ended', function() {
+        $(elem2).children()[1].play()
+        cloneAudio($(audio)[0])
       })
     }
 
-    var audio4 = $(audioEl4).children()[1]
-    if(audio4) {
-      audio4.addEventListener('ended', function() {
-        cloneAudio($(audio4)[0])     
-      })      
+    if(audioEl && audioEl2) {
+      setAudioListener(audioEl, audioEl2)
+    }
+
+    if(audioEl2 && audioEl3) {
+      setAudioListener(audioEl2, audioEl3)
+    }
+
+    if(audioEl3 && audioEl4) {
+      setAudioListener(audioEl3, audioEl4)
     }
 
     $(audioEl).children()[1].play()
