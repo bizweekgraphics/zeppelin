@@ -6,9 +6,13 @@
   <title>Zeppelin</title>
 </head>
 <body>
-  <p>4 measures are from Stairway to Heaven, 4 are from Spirit. Identify the 4 measures from Stairway and drag them into the drop boxes in the right order</p>
-  <p>Double click image to listen to measure</p>
-  <div class="wrapper">
+  <button class="difficulty" id="easy">Easy</button>
+  <button class="difficulty" id="medium">Medium</button>
+  <button class="difficulty" id="hard">Hard</button>
+
+  <div class="game-wrapper">
+    <p>4 measures are from Stairway to Heaven, 4 are from Spirit. Identify the 4 measures from Stairway and drag them into the drop boxes in the right order</p>
+    <p id="listen">Double click image to listen to measure</p>
     <div id="pile">
       <div class="top-row"></div>
       <div class="bottom-row"></div>
@@ -19,8 +23,7 @@
     <button id="answer">Show Answer</button>
     <button id="reset">Reset</button>
   </div>
-  
-  `
+
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
   <script src="http://cdn.jsdelivr.net/jquery.ui.touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>

@@ -1,11 +1,35 @@
 var winningObject = {
-  1: "img/stairway1.png",
-  2: "img/stairway2.png",
-  3: "img/stairway3.png",
-  4: "img/stairway4.png"
+  1: "stairway1",
+  2: "stairway2",
+  3: "stairway3",
+  4: "stairway4"
 }
 
 $(document).ready(function() {
+  var difficulty;
+
+  $('#easy').click(function() {
+    $('.game-wrapper').css('display', 'block')
+    difficulty = 'easy'
+    createGame(difficulty)
+  })
+
+  $('#medium').click(function() {
+    $('.game-wrapper').css('display', 'block')
+    difficulty = 'medium'
+    createGame(difficulty)
+  })
+
+  $('#hard').click(function() {
+    $('.game-wrapper').css('display', 'block')
+    $('#play').css('display', 'none')
+    $('#listen').css('display', 'none')
+    difficulty = 'hard'
+    createGame(difficulty)
+  })
+})
+
+var createGame = function(difficulty) {
   var measureArray = ['stairway1', 'stairway2', 'stairway3', 'stairway4', 'spirit1', 'spirit2', 'spirit3', 'spirit4']
   var measureArray = _.shuffle(measureArray)
 
@@ -15,14 +39,18 @@ $(document).ready(function() {
     var el = $('<div class="drag-item"><img src="img/' + measure + '.png"><audio controls><source src="audio/' + measure +'.wav" type="audio/wav">Your browser does not support the audio element.</audio></div>')    
     $('#pile .top-row').append(el)
 
-    el.dblclick(function() { 
-      this.children[1].play()
-    })
+    el.data('measure', measure)
+
+    if(difficulty !='hard'){
+      el.dblclick(function() { 
+        this.children[1].play()
+      })      
+    }
 
     var dropEl = $('<div class="drop">Drop here</div>')
+    dropEl.data('measure', 'stairway' + i)
     $('#drop').append(dropEl)
 
-    jQuery.data(dropEl[0], 'number', i)
   }
 
   $('.drag-item').draggable({
@@ -42,9 +70,14 @@ $(document).ready(function() {
     var el = $('<div class="drag-item"><img src="img/' + measure + '.png"><audio controls><source src="audio/' + measure +'.wav" type="audio/wav">Your browser does not support the audio element.</audio></div>')    
     $('#pile .bottom-row').append(el)
 
-    el.dblclick(function() { 
-      this.children[1].play()
-    })
+    el.data('measure', measure)
+
+
+    if(difficulty !='hard'){
+      el.dblclick(function() { 
+        this.children[1].play()
+      })      
+    }
 
   }
 
@@ -60,18 +93,40 @@ $(document).ready(function() {
   })
 
   var dropEvent = function(event, ui) {
-    var number = jQuery.data(this, 'number')
     ui.draggable.position( {of: $(this), my: 'left top', at: 'left top' })
     $(this).droppable('option', 'accept', ui.draggable);
   }
 
-  $('.drop').droppable({
-    hoverClass: "drop-hover",
-    drop: dropEvent,
-    out: function(event, ui){
+  if(difficulty === 'easy') {
+    $('.drop').droppable({
+      over: function(event, ui) {
+        if(ui.draggable.data('measure') ===$(this).data('measure')) {
+          $(this).addClass('drop-hover-easy')
+        } else {
+          $(this).addClass('drop-hover')
+        }
+      },
+      drop: dropEvent,
+      out: function(event, ui){
         $(this).droppable('option', 'accept', '.drag-item');
-    }   
-  });
+        if(ui.draggable.data('measure') === $(this).data('measure')) {
+          $(this).removeClass('drop-hover-easy')
+        } else {
+          $(this).removeClass('drop-hover')
+        }
+      }   
+    });    
+  } else {
+    $('.drop').droppable({
+      drop: dropEvent,
+      hoverClass: 'hover',
+      out: function(event, ui){
+        $(this).droppable('option', 'accept', '.drag-item');
+      }   
+    })
+  }
+
+
 
   var findAudioEl = function(number) {
     try {
@@ -152,10 +207,10 @@ $(document).ready(function() {
     var audioEl4 = findAudioEl(3)
 
     checkObject = {
-      1: $(audioEl).children().attr('src'),
-      2: $(audioEl2).children().attr('src'),
-      3: $(audioEl3).children().attr('src'),
-      4: $(audioEl4).children().attr('src')
+      1: $(audioEl).data('measure'),
+      2: $(audioEl2).data('measure'),
+      3: $(audioEl3).data('measure'),
+      4: $(audioEl4).data('measure')
     }
     if (JSON.stringify(checkObject) === JSON.stringify(winningObject)) {
       alert('You win!')
@@ -171,7 +226,7 @@ $(document).ready(function() {
     var findElem = function(number) {
       return _.find($('.drag-item'), function(elem) {
         var elem = $(elem)
-        return $(elem.children()[0]).attr('src') === winningObject[number]
+        return elem.data('measure') === winningObject[number]
       })
     }
 
@@ -209,8 +264,10 @@ $(document).ready(function() {
   })
 
   $('.drag-item').data('left', 0).data('top', 0)
+}
 
-})
+
+  
 
 
 

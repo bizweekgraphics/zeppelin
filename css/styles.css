@@ -2,6 +2,12 @@ body {
   background: #f6ea9c;
 }
 
+
+.game-wrapper {
+  width: 970px;
+  display: none;
+}
+
 .drag-item {
   display: inline-block;
   margin: 1em;
@@ -23,9 +29,18 @@ body {
   text-align: center;
 }
 
+.hover {
+  opacity: .5;
+}
+
 .drop-hover {
   background: pink;
 }
+
+.drop-hover-easy {
+  background: lightgreen;
+}
+
 
 audio {
   display: none;
@@ -36,6 +51,3 @@ img {
   height: auto;
 }
 
-.wrapper {
-  width: 970px;
-}
