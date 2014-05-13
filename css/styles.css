@@ -5,13 +5,17 @@ src: url(../fonts/kashimir.ttf);
 }
 
 body {
-  background: #f6ea9c;
+  background: #dfe9d7;
 }
 
 .wrapper {
   width: 970px;
 }
 
+p {
+  font-family: 'kashimir';
+  font-size: 1em;
+}
 
 .game-wrapper {
   display: none;
@@ -22,9 +26,9 @@ body {
   margin: 0 auto;
   margin-bottom: 2em;
   border: none;
-  width: 15%;
-  font-size: 1.5em;
-  padding: .5em 1em .5em 1em;
+  width: 25%;
+  font-size: 2em;
+  padding: 1.5em 1em 1.5em 1em;
   font-family: 'kashimir';
   color: white;
   background: black;
@@ -62,6 +66,7 @@ body {
 }
 
 .drop {
+  font-family: 'kashimir';
   display: inline-block;
   width: 194px;
   height: 174px;
@@ -98,4 +103,12 @@ img {
   width: 100%;
   margin: 0 auto;
   text-align: center;
+}
+
+.game-button button {
+  font-family: 'kashimir';
+  border: none;
+  background: black;
+  color: white;
+  font-size: 1em;
 }
