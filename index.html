@@ -6,27 +6,31 @@
   <title>Zeppelin</title>
 </head>
 <body>
+  <div class="container">
   <div class="wrapper">
     <button class="difficulty" id="easy">Easy</button>
     <button class="difficulty" id="medium">Medium</button>
     <button class="difficulty" id="hard">Hard</button>
 
     <div class="game-wrapper">
-      <p>4 measures are from Stairway to Heaven, 4 are from Spirit. Identify the 4 measures from Stairway and drag them into the drop boxes in the right order</p>
-      <p id="listen">Double click image to listen to measure</p>
+      <div class="text-wrapper">
+        <p>4 measures are from Stairway to Heaven, 4 are from Spirit. Identify the 4 measures from Stairway and drag them into the drop boxes in the right order</p>
+        <p id="listen">Double click image to listen to measure</p>
+      </div>
       <div id="pile">
-        <div class="row top-row"></div>
-        <div class="row bottom-row"></div>
+        <div class="measure-row top-row"></div>
+        <div class="measure-row bottom-row"></div>
       </div>
-      <div id="drop" class="content"></div>
-      <div class="game-button">
-        <button id="submit">Submit</button>
-        <button id="play">Play</button>
-        <button id="answer">Show Answer</button>
-        <button id="reset">Reset</button>
+      <div class="game-button one-third column">
         <button id="newgame">New Game</button>
+        <button id="play">Play</button>
+        <button id="reset">Reset</button>
+        <button id="answer">Show Answer</button>
+        <button id="submit">Submit</button>
       </div>
+      <div id="drop" class="two-thirds column content"></div>
     </div>
+  </div>
   </div>
 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>

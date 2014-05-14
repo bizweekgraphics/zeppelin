@@ -111,9 +111,10 @@ var createGame = function(difficulty) {
     try {
       return _.find($('.drag-item'), function(elem) {
           var elem = $(elem)
-          var margin = parseInt(elem.css('margin'))
-          var top = Math.round(elem.position().top) + margin
-          var left = Math.round(elem.position().left) + margin
+          var marginLeft = parseInt(elem.css('margin-left'))
+          var marginTop = parseInt(elem.css('margin-top'))
+          var top = Math.round(elem.position().top) + marginTop
+          var left = Math.round(elem.position().left) + marginLeft
           return (top === Math.round($('.drop:eq(' + number + ')').position().top) && left === Math.round($('.drop:eq(' + number + ')').position().left))
       })
     } catch(e) {
@@ -237,7 +238,7 @@ var newGame = function() {
   $('.game-wrapper').remove()
   $('.difficulty').css('display', 'block')
 
-  var template = '<div class="game-wrapper style="display:none"><p>4 measures are from Stairway to Heaven, 4 are from Spirit. Identify the 4 measures from Stairway and drag them into the drop boxes in the right order</p><p id="listen">Double click image to listen to measure</p><div id="pile"><div class="row top-row"></div><div class="row bottom-row"></div></div><div id="drop" class="content"></div><div class="game-button"><button id="submit">Submit</button><button id="play">Play</button><button id="answer">Show Answer</button><button id="reset">Reset</button><button id="newgame">New Game</button></div></div></div>'
+  var template = '<div class="game-wrapper"><div class="text-wrapper"><p>4 measures are from Stairway to Heaven, 4 are from Spirit. Identify the 4 measures from Stairway and drag them into the drop boxes in the right order</p><p id="listen">Double click image to listen to measure</p> </div><div id="pile"><div class="measure-row top-row"></div><div class="measure-row bottom-row"></div></div><div class="game-button one-third column"><button id="newgame">New Game</button><button id="play">Play</button><button id="reset">Reset</button><button id="answer">Show Answer</button><button id="submit">Submit</button></div><div id="drop" class="two-thirds column content"></div></div>'
 
   $('body').append(template)
 }
