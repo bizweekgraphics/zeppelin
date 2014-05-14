@@ -41,8 +41,7 @@ p {
   font-family: 'kashimir';
   font-size: 1.5em;
   color: white;
-  margin-left: 2em;
-  margin-bottom: 0px;
+  margin: 0em 1em 0em 1em;
 }
 
 .game-wrapper {
