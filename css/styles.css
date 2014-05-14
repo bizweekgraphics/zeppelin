@@ -22,13 +22,13 @@ body {
   margin-right: 0px; 
 }*/
 
-.container .one-third.column { 
+/*.container .one-third.column { 
   width: 100px; 
 }
 
 .container .two-thirds.column { 
   width: 800px; 
-}
+}*/
 
 .wrapper {
   width: 970px;
@@ -96,8 +96,9 @@ p {
   text-align: right;*/
   float: left;
   display: inline;
-  padding-top: 1em !important;
-  width: 800px; 
+  width: 776px; 
+  height: 174px;
+  background: blue;
 
 }
 
@@ -109,7 +110,8 @@ p {
   background: black;
   text-align: center;
   color: white;
-  border: 1px solid white;
+  /*border: 1px solid white;*/
+  opacity: 0;
 }
 
 
@@ -139,6 +141,7 @@ audio {
 img {
   width: 194px;
   height: 174px;
+  -webkit-filter: invert(100%);
 }
 
 .game-button {
