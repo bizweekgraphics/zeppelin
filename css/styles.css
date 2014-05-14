@@ -39,9 +39,10 @@ body {
 
 p {
   font-family: 'kashimir';
-  font-size: 1em;
+  font-size: 1.5em;
   color: white;
   margin-left: 2em;
+  margin-bottom: 0px;
 }
 
 .game-wrapper {
@@ -78,7 +79,7 @@ p {
 
 .drag-item {
   display: inline-block;
-  margin: .25em 1em 1em 1em;
+  margin: .25em .25em .25em .25em;
   height: 5em;
   width: 20%;
   color: white;
@@ -141,7 +142,7 @@ img {
   display: inline;
   width: 100px;
   text-align: center;
-  margin-left: 2em !important;
+  margin-left: 1.5em;
   margin-top: .5em !important;
 }
 
