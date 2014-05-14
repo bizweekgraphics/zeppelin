@@ -53,7 +53,7 @@ var createGame = function(difficulty) {
       el.dblclick(function() {
       $('audio').each(function(index,audio) {
         audio.pause()
-        audio.crreuntTime = 0
+        audio.currentTime = 0
       })
         this.children[1].play()
       })      
