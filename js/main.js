@@ -31,6 +31,10 @@ $(document).ready(function() {
   })
 
   $('#easy').click(function() {
+    $('.difficulty-wrapper a').unbind('mouseover')
+    $('.difficulty-wrapper a').unbind('mouseleave')
+    $('#arrow').css('left', '396px')
+    $('#arrow').show()
     $('.difficulty-wrapper a').css('color', 'white')
     $(this).css('color', 'red')
     difficulty = 'easy'
@@ -40,6 +44,10 @@ $(document).ready(function() {
   })
 
   $('#medium').click(function() {
+    $('.difficulty-wrapper a').unbind('mouseover')
+    $('.difficulty-wrapper a').unbind('mouseleave')
+    $('#arrow').css('left', '477px')
+    $('#arrow').show()
     $('.difficulty-wrapper a').css('color', 'white')
     $(this).css('color', 'red')
     newGame()
@@ -49,6 +57,10 @@ $(document).ready(function() {
   })
 
   $('#hard').click(function() {
+    $('.difficulty-wrapper a').unbind('mouseover')
+    $('.difficulty-wrapper a').unbind('mouseleave')
+    $('#arrow').css('left', '577px')
+    $('#arrow').show()
     $('.difficulty-wrapper a').css('color', 'white')
     $(this).css('color', 'red')
     newGame()
@@ -101,11 +113,11 @@ var createGame = function(difficulty) {
       $(this).children().first().attr('src', 'img/white/' + source + '.png')
     },
     stop: function(event, ui) {
-      var source = $(this).data('measure')
-      $(this).children().first().attr('src', 'img/' + source + '.png')
+
     },
     revert: function(event, ui) {
-      
+      var source = $(this).data('measure')
+      $(this).children().first().attr('src', 'img/' + source + '.png')
       $(this).data('uiDraggable').originalPosition = {
         top: 0,
         left: 0
