@@ -34,6 +34,9 @@ body {
   width: 970px;
 }
 
+:focus {outline:none;}
+::-moz-focus-inner {border:0;}
+
 p {
   font-family: 'kashimir';
   font-size: 1em;
