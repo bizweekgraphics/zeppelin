@@ -11,9 +11,28 @@ $(document).ready(function() {
   // })
 
   var difficulty;
+  $('#easy').mouseover(function() {
+    $('#arrow').css('left', '396px')
+    $('#arrow').show()
+  })
+
+  $('#medium').mouseover(function() {
+    $('#arrow').css('left', '477px')
+    $('#arrow').show()
+  })
+
+  $('#hard').mouseover(function() {
+    $('#arrow').css('left', '577px')
+    $('#arrow').show()
+  })
+
+  $('.difficulty-wrapper a').mouseleave(function() {
+    $('#arrow').css('display', 'none')
+  })
 
   $('#easy').click(function() {
-    // $('.difficulty-wrapper').css('display', 'none')
+    $('.difficulty-wrapper a').css('color', 'white')
+    $(this).css('color', 'red')
     difficulty = 'easy'
     newGame()
     createGame(difficulty)
@@ -21,7 +40,8 @@ $(document).ready(function() {
   })
 
   $('#medium').click(function() {
-    // $('.difficulty-wrapper').css('display', 'none')
+    $('.difficulty-wrapper a').css('color', 'white')
+    $(this).css('color', 'red')
     newGame()
     $('.game-wrapper').fadeIn('slow')
     difficulty = 'medium'
@@ -29,7 +49,8 @@ $(document).ready(function() {
   })
 
   $('#hard').click(function() {
-    // $('.difficulty-wrapper').css('display', 'none')
+    $('.difficulty-wrapper a').css('color', 'white')
+    $(this).css('color', 'red')
     newGame()
     $('.game-wrapper').fadeIn('slow')
     $('#play').css('display', 'none')
@@ -266,6 +287,8 @@ var createGame = function(difficulty) {
   $('#newgame').click(function() {
     // $('.difficulty-wrapper').css('display', 'block')
     newGame()
+    createGame(difficulty)
+    $('.game-wrapper').fadeIn('slow')
 })
 }
 

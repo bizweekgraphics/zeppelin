@@ -105,6 +105,17 @@ p {
   margin: 0em 1em 0em 1em;
 }
 
+#arrow {
+  display: none;
+  color: red;
+  position: absolute;
+  font-size: .75em;
+  top: 37px;
+  left: 396px;
+  /*left: 477px;*/
+  /*left: 577px;*/
+}
+
 .game-wrapper {
   display: none;
   width: 970px;
@@ -163,7 +174,7 @@ p {
 
 .drag-item {
   display: inline-block;
-  margin: .5em;
+  margin: .77em;
   height: 174px;
   width: 194px;
   /*width: 20%;*/
@@ -233,7 +244,7 @@ p {
 }
 
 .drop-hover-easy {
-  background: green;
+  background: gold;
   opacity: 1;
 }
 
