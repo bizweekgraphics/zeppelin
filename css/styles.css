@@ -163,7 +163,7 @@ p {
 
 .drag-item {
   display: inline-block;
-  margin: 1em 1em 1em 1em;
+  margin: .5em;
   height: 174px;
   width: 194px;
   /*width: 20%;*/
@@ -236,7 +236,7 @@ audio {
   display: none;
 }
 
-img {
+.drag-item img {
   width: 194px;
   height: 174px;
 }

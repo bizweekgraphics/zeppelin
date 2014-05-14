@@ -96,6 +96,8 @@ var createGame = function(difficulty) {
   var dropEvent = function(event, ui) {
     ui.draggable.position( {of: $(this), my: 'left top', at: 'left top' })
     $(this).droppable('option', 'accept', ui.draggable);
+    var source = ui.draggable.data('measure')
+    ui.draggable.children().first().attr('src', 'img/white/' + source + '.png')
   }
 
   if(difficulty === 'easy') {
@@ -276,8 +278,8 @@ var newGame = function() {
   // $('.difficulty').css('display', 'inline')
 
   var template="";
-  template += "<div class=\"game-wrapper\">";
-  template += "    <div id=\"win\">You win<p>Close<\/p><\/div>";
+  template += "    <div class=\"game-wrapper\">";
+  template += "    <div id=\"win\"><p>You win<p><p>Close<\/p><\/div>";
   template += "      <div class=\"text-wrapper\">";
   template += "        <p>Four measures are taken from Stairway to Heaven by Led Zeppelin. The other four are from Taurus by Spirit. Identify the four measures from Stairway to Heaven and drag them into the drop boxes in the correct order<\/p>";
   template += "        <p id=\"listen\">Double click a measure to listen<\/p>";
@@ -290,13 +292,15 @@ var newGame = function() {
   template += "        <div id=\"drop\" class=\"two-thirds column content\"><\/div>";
   template += "      <\/div>";
   template += "      <div class=\"game-button one-third column\">";
-  template += "        <a href=\"#\" id=\"newgame\">New Game<\/a>";
-  template += "        <a href=\"#\" id=\"play\">Play<\/a>";
-  template += "        <a href=\"#\" id=\"reset\">Reset<\/a>";
-  template += "        <a href=\"#\" id=\"answer\">Show Answer<\/a>";
-  template += "        <a href=\"#\" id=\"submit\">Submit<\/a>";
+  template += "        <a href=\"#\" id=\"newgame\"><img src=\"img\/newgame.png\"><\/a>";
+  template += "        <a href=\"#\" id=\"play\"><img src=\"img\/play.png\"><\/a>";
+  template += "        <a href=\"#\" id=\"reset\"><img src=\"img\/reset.png\"><\/a>";
+  template += "        <a href=\"#\" id=\"answer\"><img src=\"img\/reveal.png\"><\/a>";
+  template += "        <a href=\"#\" id=\"submit\"><img src=\"img\/submit.png\"><\/a>";
   template += "      <\/div>";
   template += "    <\/div>";
+
+
 
 
   $('body').append(template)
