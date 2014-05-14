@@ -50,7 +50,11 @@ var createGame = function(difficulty) {
     el.data('measure', measure)
 
     if(difficulty !='hard'){
-      el.dblclick(function() { 
+      el.dblclick(function() {
+      $('audio').each(function(index,audio) {
+        audio.pause()
+        audio.crreuntTime = 0
+      })
         this.children[1].play()
       })      
     }

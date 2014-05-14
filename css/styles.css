@@ -9,9 +9,9 @@ body {
 }
 
 .container { 
-  position: relative; 
+  /*position: relative; */
   width: 970px; 
-  margin: 0 auto; 
+  /*margin: 0 auto; */
   padding: 0; 
 }
 
@@ -38,7 +38,7 @@ body {
 ::-moz-focus-inner {border:0;}
 
 p {
-  font-family: 'kashimir';
+  font-family: helvetica, arial, sans-serif;
   font-size: 1.5em;
   color: white;
   margin: 0em 1em 0em 1em;
@@ -46,6 +46,10 @@ p {
 
 .game-wrapper {
   display: none;
+}
+
+.text-wrapper {
+  width: 970px;
 }
 
 .difficulty {
@@ -80,7 +84,7 @@ p {
   display: inline-block;
   margin: .25em .25em .25em .25em;
   height: 5em;
-  width: 20%;
+  /*width: 20%;*/
   color: white;
   cursor: move;
 }
@@ -113,6 +117,7 @@ p {
 .measure-row {
   text-align: center;
   margin-bottom: 0px;
+  width: 970px;
 }
 
 .hover {
