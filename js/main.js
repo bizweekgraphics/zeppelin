@@ -13,7 +13,7 @@ $(document).ready(function() {
   var difficulty;
 
   $('#easy').click(function() {
-    $('.difficulty-wrapper').css('display', 'none')
+    // $('.difficulty-wrapper').css('display', 'none')
     difficulty = 'easy'
     newGame()
     createGame(difficulty)
@@ -21,7 +21,7 @@ $(document).ready(function() {
   })
 
   $('#medium').click(function() {
-    $('.difficulty-wrapper').css('display', 'none')
+    // $('.difficulty-wrapper').css('display', 'none')
     newGame()
     $('.game-wrapper').fadeIn('slow')
     difficulty = 'medium'
@@ -29,7 +29,7 @@ $(document).ready(function() {
   })
 
   $('#hard').click(function() {
-    $('.difficulty-wrapper').css('display', 'none')
+    // $('.difficulty-wrapper').css('display', 'none')
     newGame()
     $('.game-wrapper').fadeIn('slow')
     $('#play').css('display', 'none')
@@ -68,7 +68,7 @@ var createGame = function(difficulty) {
   }
 
   for(var i=1; i < 5; i++){
-    var dropEl = $('<div class="drop">Drop here</div>')
+    var dropEl = $('<div class="drop"></div>')
     dropEl.data('measure', 'stairway' + i)
     $('#drop').append(dropEl)    
   }
@@ -264,7 +264,7 @@ var createGame = function(difficulty) {
   $('.drag-item').data('left', 0).data('top', 0)
 
   $('#newgame').click(function() {
-    $('.difficulty-wrapper').css('display', 'block')
+    // $('.difficulty-wrapper').css('display', 'block')
     newGame()
 })
 }
@@ -292,16 +292,13 @@ var newGame = function() {
   template += "        <div id=\"drop\" class=\"two-thirds column content\"><\/div>";
   template += "      <\/div>";
   template += "      <div class=\"game-button one-third column\">";
-  template += "        <a href=\"#\" id=\"newgame\"><img src=\"img\/newgame.png\"><\/a>";
-  template += "        <a href=\"#\" id=\"play\"><img src=\"img\/play.png\"><\/a>";
-  template += "        <a href=\"#\" id=\"reset\"><img src=\"img\/reset.png\"><\/a>";
-  template += "        <a href=\"#\" id=\"answer\"><img src=\"img\/reveal.png\"><\/a>";
   template += "        <a href=\"#\" id=\"submit\"><img src=\"img\/submit.png\"><\/a>";
+  template += "        <a href=\"#\" id=\"play\"><img src=\"img\/play.png\"><\/a>";
+  template += "        <a href=\"#\" id=\"answer\"><img src=\"img\/reveal.png\"><\/a>";
+  template += "        <a href=\"#\" id=\"reset\"><img src=\"img\/reset.png\"><\/a>";
+  template += "        <a href=\"#\" id=\"newgame\"><img src=\"img\/newgame.png\"><\/a>";
   template += "      <\/div>";
   template += "    <\/div>";
-
-
-
 
   $('body').append(template)
 }
