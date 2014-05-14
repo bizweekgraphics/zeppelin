@@ -8,27 +8,34 @@
 <body>
   <div class="container">
   <div class="wrapper">
-    <button class="difficulty" id="easy">Easy</button>
-    <button class="difficulty" id="medium">Medium</button>
-    <button class="difficulty" id="hard">Hard</button>
+    <div class="difficulty-wrapper">
+    <a href="#" class="difficulty" id="easy">Easy</a><span>,</span>
+    <a href="#" class="difficulty" id="medium">Medium</a><span>, or </span>
+    <a href="#" class="difficulty" id="hard">Hard</a>
+    </div>
+
+
 
     <div class="game-wrapper">
+    <div id="win"><p>You win<p><p>Close</p></div>
       <div class="text-wrapper">
-        <p>Four measures are taken from Stairway to Heaven by Led Zeppelin. The other four are from Spirit by Taurus. Identify the four measures from Stairway to Heaven and drag them into the drop boxes in the correct order</p>
-        <p id="listen">Double click measure to listen</p>
+        <p>Four measures are taken from Stairway to Heaven by Led Zeppelin. The other four are from Taurus by Spirit. Identify the four measures from Stairway to Heaven and drag them into the drop boxes in the correct order</p>
+        <p id="listen">Double click a measure to listen</p>
       </div>
       <div id="pile">
         <div class="measure-row top-row"></div>
         <div class="measure-row bottom-row"></div>
       </div>
-      <div class="game-button one-third column">
-        <button id="newgame">New Game</button>
-        <button id="play">Play</button>
-        <button id="reset">Reset</button>
-        <button id="answer">Show Answer</button>
-        <button id="submit">Submit</button>
+      <div class="drop-wrapper">
+        <div id="drop" class="two-thirds column content"></div>
       </div>
-      <div id="drop" class="two-thirds column content"></div>
+      <div class="game-button one-third column">
+        <a href="#" id="newgame">New Game</a>
+        <a href="#" id="play">Play</a>
+        <a href="#" id="reset">Reset</a>
+        <a href="#" id="answer">Show Answer</a>
+        <a href="#" id="submit">Submit</a>
+      </div>
     </div>
   </div>
   </div>
@@ -37,7 +44,7 @@
   <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
   <script src="http://cdn.jsdelivr.net/jquery.ui.touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-smooth-scroll/1.4.13/jquery.smooth-scroll.min.js"></script>
+
   <script src="js/main.js"></script>
 </body>
 </html>

@@ -6,25 +6,32 @@ var winningObject = {
 }
 
 $(document).ready(function() {
+  // $(window).click(function() {
+  //   $('#win').css('display', 'none')
+  // })
+
   var difficulty;
 
   $('#easy').click(function() {
-    $('.game-wrapper').fadeIn('slow')
-    $('.difficulty').css('display', 'none')
+    $('.difficulty-wrapper').css('display', 'none')
     difficulty = 'easy'
+    newGame()
     createGame(difficulty)
+    $('.game-wrapper').fadeIn('slow')
   })
 
   $('#medium').click(function() {
+    $('.difficulty-wrapper').css('display', 'none')
+    newGame()
     $('.game-wrapper').fadeIn('slow')
-    $('.difficulty').css('display', 'none')
     difficulty = 'medium'
     createGame(difficulty)
   })
 
   $('#hard').click(function() {
+    $('.difficulty-wrapper').css('display', 'none')
+    newGame()
     $('.game-wrapper').fadeIn('slow')
-    $('.difficulty').css('display', 'none')
     $('#play').css('display', 'none')
     $('#listen').css('display', 'none')
     difficulty = 'hard'
@@ -68,7 +75,16 @@ var createGame = function(difficulty) {
 
   $('.drag-item').draggable({
     stack: '#pile div',
+    start: function(event, ui) {
+      var source = $(this).data('measure')
+      $(this).children().first().attr('src', 'img/white/' + source + '.png')
+    },
+    stop: function(event, ui) {
+      var source = $(this).data('measure')
+      $(this).children().first().attr('src', 'img/' + source + '.png')
+    },
     revert: function(event, ui) {
+      
       $(this).data('uiDraggable').originalPosition = {
         top: 0,
         left: 0
@@ -176,10 +192,24 @@ var createGame = function(difficulty) {
       4: $(audioEl4).data('measure')
     }
     if (JSON.stringify(checkObject) === JSON.stringify(winningObject)) {
-      alert('You win!')
+      // alert('You win!')
+      $('#win').text('You Win!')
     } else {
-      alert('You lose!')
+      $('#win').text('You Lose!')
     }
+    $('#win').show();
+    $('#win').animate({
+      left: '270px',
+      top: '200px',
+      width: '400px',
+      height: '100px',
+      opacity: 1
+    })
+    setTimeout(function() {
+      $(window).one('click', function() {
+        $('#win').css('display', 'none')
+      })
+    }, 1000)
   })
 
   $('#answer').click(function() {
@@ -232,20 +262,47 @@ var createGame = function(difficulty) {
   $('.drag-item').data('left', 0).data('top', 0)
 
   $('#newgame').click(function() {
+    $('.difficulty-wrapper').css('display', 'block')
     newGame()
 })
 }
 
-
+var clearGame = function() {
+  $('.game-wrapper').remove()
+}
 
 var newGame = function() {
-  $('.game-wrapper').remove()
-  $('.difficulty').css('display', 'block')
+  clearGame()
+  // $('.difficulty').css('display', 'inline')
 
-  var template = '<div class="game-wrapper"><div class="text-wrapper"><p>Four measures are taken from Stairway to Heaven by Led Zeppelin. The other four are from Spirit by Taurus. Identify the four measures from Stairway to Heaven and drag them into the drop boxes in the correct order</p><p id="listen">Double click measure to listen</p> </div><div id="pile"><div class="measure-row top-row"></div><div class="measure-row bottom-row"></div></div><div class="game-button one-third column"><button id="newgame">New Game</button><button id="play">Play</button><button id="reset">Reset</button><button id="answer">Show Answer</button><button id="submit">Submit</button></div><div id="drop" class="two-thirds column content"></div></div>'
+  var template="";
+  template += "<div class=\"game-wrapper\">";
+  template += "    <div id=\"win\">You win<p>Close<\/p><\/div>";
+  template += "      <div class=\"text-wrapper\">";
+  template += "        <p>Four measures are taken from Stairway to Heaven by Led Zeppelin. The other four are from Taurus by Spirit. Identify the four measures from Stairway to Heaven and drag them into the drop boxes in the correct order<\/p>";
+  template += "        <p id=\"listen\">Double click a measure to listen<\/p>";
+  template += "      <\/div>";
+  template += "      <div id=\"pile\">";
+  template += "        <div class=\"measure-row top-row\"><\/div>";
+  template += "        <div class=\"measure-row bottom-row\"><\/div>";
+  template += "      <\/div>";
+  template += "      <div class=\"drop-wrapper\">";
+  template += "        <div id=\"drop\" class=\"two-thirds column content\"><\/div>";
+  template += "      <\/div>";
+  template += "      <div class=\"game-button one-third column\">";
+  template += "        <a href=\"#\" id=\"newgame\">New Game<\/a>";
+  template += "        <a href=\"#\" id=\"play\">Play<\/a>";
+  template += "        <a href=\"#\" id=\"reset\">Reset<\/a>";
+  template += "        <a href=\"#\" id=\"answer\">Show Answer<\/a>";
+  template += "        <a href=\"#\" id=\"submit\">Submit<\/a>";
+  template += "      <\/div>";
+  template += "    <\/div>";
+
 
   $('body').append(template)
 }
+
+
 
   
 
