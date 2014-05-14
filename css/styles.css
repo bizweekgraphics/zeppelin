@@ -5,7 +5,7 @@ src: url(../fonts/kashimir.ttf);
 }
 
 body {
-  background: #f5f5e2;
+  background: black;
 }
 
 .wrapper {
@@ -15,6 +15,7 @@ body {
 p {
   font-family: 'kashimir';
   font-size: 1em;
+  color: white;
 }
 
 .game-wrapper {
@@ -73,7 +74,10 @@ p {
   background: black;
   text-align: center;
   color: white;
+  border: 1px solid white;
 }
+
+
 
 .row {
   text-align: center;
@@ -84,11 +88,11 @@ p {
 }
 
 .drop-hover {
-  background: pink;
+  background: red;
 }
 
 .drop-hover-easy {
-  background: lightgreen;
+  background: green;
 }
 
 audio {
