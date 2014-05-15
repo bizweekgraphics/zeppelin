@@ -7,11 +7,12 @@
 </head>
 <body>
   <div class="container">
+  <img src="img/head.png">
   <div class="wrapper">
     <div class="difficulty-wrapper">
-    <a href="#" class="difficulty" id="easy">Easy</a><span>,</span>
-    <a href="#" class="difficulty" id="medium">Medium</a><span>, or </span>
-    <a href="#" class="difficulty" id="hard">Hard</a>
+    <a href="#easy-text" class="difficulty" id="easy">Easy</a><span>,</span>
+    <a href="#medium-text" class="difficulty" id="medium">Medium</a><span>, or </span>
+    <a href="#hard-text" class="difficulty" id="hard">Hard</a>
     <span id="arrow">&#x25B2;</span>
     </div>
 
@@ -20,8 +21,9 @@
     <div class="game-wrapper">
     <div id="win"><p>You win<p><p>Close</p></div>
       <div class="text-wrapper">
-        <p>Four measures are taken from Stairway to Heaven by Led Zeppelin. The other four are from Taurus by Spirit. Identify the four measures from Stairway to Heaven and drag them into the drop boxes in the correct order</p>
-        <p id="listen">Double click a measure to listen</p>
+        <p id="easy-text">Find the four measures from <em>Stairway to Heaven</em> and assemble them in order below. The other four measures come from Spirit’s <em>Taurus</em>. Double-click each bar to hear the piper lead us to reason. Everything still turns to gold when each measure is in the correct spot.</p>
+        <p id="medium-text">Your stairway lies on the whispering wind. Find the four measures from Led Zeppelin’s song and assemble them in order below. Double-click on each bar—if you listen very hard, the tune will come to you at last. No hints from the answer field.</p>
+        <p id="hard-text">To be a rock and not to roll. That means no music to help you this time and no hints from the answer field, guitar hero. Find the four measures from <em>Stairway to Heaven</em> by reading the notes and assemble them in order below.</p>
       </div>
       <div id="pile">
         <div class="measure-row top-row"></div>
@@ -31,11 +33,11 @@
         <div id="drop" class="two-thirds column content"></div>
       </div>
       <div class="game-button one-third column">
-        <a href="#" id="submit"><img src="img/submit.png"></a>
-        <a href="#" id="play"><img src="img/play.png"></a>
-        <a href="#" id="answer"><img src="img/reveal.png"></a>
-        <a href="#" id="reset"><img src="img/reset.png"></a>
-        <a href="#" id="newgame"><img src="img/newgame.png"></a>
+        <a href="" id="submit"><img src="img/submit.png"></a>
+        <a href="" id="play"><img src="img/play.png"></a>
+        <a href="" id="answer"><img src="img/reveal.png"></a>
+        <a href="" id="reset"><img src="img/reset.png"></a>
+        <a href="" id="newgame"><img src="img/newgame.png"></a>
 
 
       </div>
@@ -46,6 +48,7 @@
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
   <script src="http://cdn.jsdelivr.net/jquery.ui.touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-smooth-scroll/1.4.13/jquery.smooth-scroll.min.js"></script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
 
   <script src="js/main.js"></script>

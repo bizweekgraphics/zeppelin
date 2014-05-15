@@ -57,7 +57,7 @@ body {
   color: white;
   position: absolute;
   left: 200px;
-  top: 250px;
+  top: 810px;
   width: 0;
   height: 0;
   z-index: 100;
@@ -110,7 +110,7 @@ p {
   color: red;
   position: absolute;
   font-size: .75em;
-  top: 37px;
+  top: 810px;
   left: 396px;
   /*left: 477px;*/
   /*left: 577px;*/
@@ -170,6 +170,10 @@ p {
 .difficulty:hover {
   color: red;
   cursor: pointer;
+}
+
+.text-wrapper p {
+  display: none;
 }
 
 .drag-item {
@@ -244,7 +248,7 @@ p {
 }
 
 .drop-hover-easy {
-  background: gold;
+  background: #ccb93d;
   opacity: 1;
 }
 
@@ -280,11 +284,11 @@ audio {
   color: white;
   font-size: 1.5em;
   margin-right: 1em;
-  -webkit-transition: all .25s ease-in-out;
+/*  -webkit-transition: all .25s ease-in-out;
   -moz-transition: all .25s ease-in-out;
   -ms-transition: all .25s ease-in-out;
   -o-transition: all .25s ease-in-out;
-  transition: all .25s ease-in-out;
+  transition: all .25s ease-in-out;*/
 }
 
 .game-button img {

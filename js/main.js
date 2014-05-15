@@ -6,9 +6,7 @@ var winningObject = {
 }
 
 $(document).ready(function() {
-  // $(window).click(function() {
-  //   $('#win').css('display', 'none')
-  // })
+  $('html').smoothScroll(300);
 
   var difficulty;
   $('#easy').mouseover(function() {
@@ -30,7 +28,7 @@ $(document).ready(function() {
     $('#arrow').css('display', 'none')
   })
 
-  $('#easy').click(function() {
+  $('#easy').click(function(event) {
     $('.difficulty-wrapper a').unbind('mouseover')
     $('.difficulty-wrapper a').unbind('mouseleave')
     $('#arrow').css('left', '396px')
@@ -40,10 +38,11 @@ $(document).ready(function() {
     difficulty = 'easy'
     newGame()
     createGame(difficulty)
+    $('#easy-text').css('display', 'block')
     $('.game-wrapper').fadeIn('slow')
   })
 
-  $('#medium').click(function() {
+  $('#medium').click(function(event) {
     $('.difficulty-wrapper a').unbind('mouseover')
     $('.difficulty-wrapper a').unbind('mouseleave')
     $('#arrow').css('left', '477px')
@@ -51,12 +50,13 @@ $(document).ready(function() {
     $('.difficulty-wrapper a').css('color', 'white')
     $(this).css('color', 'red')
     newGame()
+   $('#medium-text').css('display', 'block')
     $('.game-wrapper').fadeIn('slow')
     difficulty = 'medium'
     createGame(difficulty)
   })
 
-  $('#hard').click(function() {
+  $('#hard').click(function(event) {
     $('.difficulty-wrapper a').unbind('mouseover')
     $('.difficulty-wrapper a').unbind('mouseleave')
     $('#arrow').css('left', '577px')
@@ -64,9 +64,9 @@ $(document).ready(function() {
     $('.difficulty-wrapper a').css('color', 'white')
     $(this).css('color', 'red')
     newGame()
+   $('#hard-text').css('display', 'block')
     $('.game-wrapper').fadeIn('slow')
     $('#play').css('display', 'none')
-    $('#listen').css('display', 'none')
     difficulty = 'hard'
     createGame(difficulty)
   })
@@ -106,6 +106,8 @@ var createGame = function(difficulty) {
     $('#drop').append(dropEl)    
   }
 
+  var dragLock = true
+
   $('.drag-item').draggable({
     stack: '#pile div',
     start: function(event, ui) {
@@ -127,6 +129,7 @@ var createGame = function(difficulty) {
   })
 
   var dropEvent = function(event, ui) {
+    ui.draggable.data('dragLock', 'true')
     ui.draggable.position( {of: $(this), my: 'left top', at: 'left top' })
     $(this).droppable('option', 'accept', ui.draggable);
     var source = ui.draggable.data('measure')
@@ -178,7 +181,8 @@ var createGame = function(difficulty) {
   }
 
 
-  $('#play').click(function() {
+  $('#play').click(function(event) {
+    event.preventDefault()
 
     var audioEl = findAudioEl(0)
     var audioEl2 = findAudioEl(1)
@@ -214,7 +218,8 @@ var createGame = function(difficulty) {
     $(audioEl).children()[1].play()
   })
 
-  $('#submit').click(function() {
+  $('#submit').click(function(event) {
+    event.preventDefault()
     var audioEl = findAudioEl(0)
     var audioEl2 = findAudioEl(1)
     var audioEl3 = findAudioEl(2)
@@ -247,7 +252,8 @@ var createGame = function(difficulty) {
     }, 1000)
   })
 
-  $('#answer').click(function() {
+  $('#answer').click(function(event) {
+    event.preventDefault()
 
     reset()
 
@@ -290,13 +296,15 @@ var createGame = function(difficulty) {
     $('.drop').droppable('option', 'accept', '.drag-item')
   }
 
-  $('#reset').click(function() {
+  $('#reset').click(function(event) {
+    event.preventDefault()
     reset()
   })
 
   $('.drag-item').data('left', 0).data('top', 0)
 
-  $('#newgame').click(function() {
+  $('#newgame').click(function(event) {
+    event.preventDefault()
     // $('.difficulty-wrapper').css('display', 'block')
     newGame()
     createGame(difficulty)
@@ -305,6 +313,7 @@ var createGame = function(difficulty) {
 }
 
 var clearGame = function() {
+  $('.text-wrapper p').hide()
   $('.game-wrapper').remove()
 }
 
@@ -316,8 +325,9 @@ var newGame = function() {
   template += "    <div class=\"game-wrapper\">";
   template += "    <div id=\"win\"><p>You win<p><p>Close<\/p><\/div>";
   template += "      <div class=\"text-wrapper\">";
-  template += "        <p>Four measures are taken from Stairway to Heaven by Led Zeppelin. The other four are from Taurus by Spirit. Identify the four measures from Stairway to Heaven and drag them into the drop boxes in the correct order<\/p>";
-  template += "        <p id=\"listen\">Double click a measure to listen<\/p>";
+  template += "        <p id=\"easy-text\">Find the four measures from <em>Stairway to Heaven<\/em> and assemble them in order below. The other four measures come from Spirit’s <em>Taurus<\/em>. Double-click each bar to hear the piper lead us to reason. Everything still turns to gold when each measure is in the correct spot.<\/p>";
+  template += "        <p id=\"medium-text\">Your stairway lies on the whispering wind. Find the four measures from Led Zeppelin’s song and assemble them in order below. Double-click on each bar—if you listen very hard, the tune will come to you at last. No hints from the answer field.<\/p>";
+  template += "        <p id=\"hard-text\">To be a rock and not to roll. That means no music to help you this time and no hints from the answer field, guitar hero. Find the four measures from <em>Stairway to Heaven<\/em> by reading the notes and assemble them in order below.<\/p>";
   template += "      <\/div>";
   template += "      <div id=\"pile\">";
   template += "        <div class=\"measure-row top-row\"><\/div>";
@@ -332,8 +342,12 @@ var newGame = function() {
   template += "        <a href=\"#\" id=\"answer\"><img src=\"img\/reveal.png\"><\/a>";
   template += "        <a href=\"#\" id=\"reset\"><img src=\"img\/reset.png\"><\/a>";
   template += "        <a href=\"#\" id=\"newgame\"><img src=\"img\/newgame.png\"><\/a>";
+  template += "";
+  template += "";
   template += "      <\/div>";
   template += "    <\/div>";
+
+
 
   $('body').append(template)
 }
