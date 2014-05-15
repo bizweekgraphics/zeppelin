@@ -43,6 +43,7 @@ src: url(../fonts/kashimir.ttf);
 
 body {
   background: black;
+  margin: 0px;
 }
 
 .container { 
@@ -60,7 +61,7 @@ body {
   top: 1200px;
   width: 0;
   height: 125px;
-  z-index: 100;
+  z-index: 10000;
   font-family: 'kashimir';
   text-align: center;
   font-size: 3em;
@@ -115,8 +116,8 @@ p {
   color: red;
   position: absolute;
   font-size: .75em;
-  top: 890px;
-  left: 396px;
+  top: 882px;
+  left: 388px;
   /*left: 477px;*/
   /*left: 577px;*/
 }

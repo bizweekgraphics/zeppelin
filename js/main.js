@@ -12,17 +12,17 @@ $(document).ready(function() {
 
   var difficulty;
   $('#easy').mouseover(function() {
-    $('#arrow').css('left', '396px')
+    $('#arrow').css('left', '388px')
     $('#arrow').show()
   })
 
   $('#medium').mouseover(function() {
-    $('#arrow').css('left', '477px')
+    $('#arrow').css('left', '469px')
     $('#arrow').show()
   })
 
   $('#hard').mouseover(function() {
-    $('#arrow').css('left', '577px')
+    $('#arrow').css('left', '569px')
     $('#arrow').show()
   })
 
@@ -33,7 +33,7 @@ $(document).ready(function() {
   $('#easy').click(function(event) {
     $('.difficulty-wrapper a').unbind('mouseover')
     $('.difficulty-wrapper a').unbind('mouseleave')
-    $('#arrow').css('left', '396px')
+    $('#arrow').css('left', '388px')
     $('#arrow').show()
     $('.difficulty-wrapper a').css('color', 'white')
     $(this).css('color', 'red')
@@ -46,7 +46,7 @@ $(document).ready(function() {
   $('#medium').click(function(event) {
     $('.difficulty-wrapper a').unbind('mouseover')
     $('.difficulty-wrapper a').unbind('mouseleave')
-    $('#arrow').css('left', '477px')
+    $('#arrow').css('left', '469px')
     $('#arrow').show()
     $('.difficulty-wrapper a').css('color', 'white')
     $(this).css('color', 'red')
@@ -59,7 +59,7 @@ $(document).ready(function() {
   $('#hard').click(function(event) {
     $('.difficulty-wrapper a').unbind('mouseover')
     $('.difficulty-wrapper a').unbind('mouseleave')
-    $('#arrow').css('left', '577px')
+    $('#arrow').css('left', '569px')
     $('#arrow').show()
     $('.difficulty-wrapper a').css('color', 'white')
     $(this).css('color', 'red')
