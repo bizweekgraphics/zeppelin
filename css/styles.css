@@ -112,7 +112,7 @@ p {
 }
 
 #arrow {
-  display: none;
+  /*display: none;*/
   color: red;
   position: absolute;
   font-size: .75em;
@@ -120,6 +120,10 @@ p {
   left: 388px;
   /*left: 477px;*/
   /*left: 577px;*/
+}
+
+#easy {
+  color: red;
 }
 
 .game-wrapper {

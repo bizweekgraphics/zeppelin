@@ -26,10 +26,6 @@ $(document).ready(function() {
     $('#arrow').show()
   })
 
-  $('.difficulty-wrapper a').mouseleave(function() {
-    $('#arrow').css('display', 'none')
-  })
-
   $('#easy').click(function(event) {
     $('.difficulty-wrapper a').unbind('mouseover')
     $('.difficulty-wrapper a').unbind('mouseleave')
@@ -60,7 +56,6 @@ $(document).ready(function() {
     $('.difficulty-wrapper a').unbind('mouseover')
     $('.difficulty-wrapper a').unbind('mouseleave')
     $('#arrow').css('left', '569px')
-    $('#arrow').show()
     $('.difficulty-wrapper a').css('color', 'white')
     $(this).css('color', 'red')
     newGame()
@@ -69,6 +64,20 @@ $(document).ready(function() {
     difficulty = 'hard'
     createGame(difficulty)
   })
+
+    var init = function() {
+      $('.difficulty-wrapper a').unbind('mouseover')
+      $('.difficulty-wrapper a').unbind('mouseleave')
+      $('#arrow').css('left', '388px')
+      $('.difficulty-wrapper a').css('color', 'white')
+      $('#easy').css('color', 'red')
+      difficulty = 'easy'
+      newGame()
+      createGame(difficulty)
+      $('.game-wrapper').fadeIn('slow')
+    }
+
+    init()
 })
 
 var createGame = function(difficulty) {
