@@ -5,12 +5,6 @@ var winningObject = {
   4: "stairway4"
 }
 
-function fbShare(url, title, descr, image, winWidth, winHeight) {
-    var winTop = (screen.height / 2) - (winHeight / 2);
-    var winLeft = (screen.width / 2) - (winWidth / 2);
-    window.open('http://www.facebook.com/sharer.php?s=100&p[title]=' + title + '&p[summary]=' + descr + '&p[url]=' + url + '&p[images][0]=' + image, 'sharer', 'top=' + winTop + ',left=' + winLeft + ',toolbar=0,status=0,width=' + winWidth + ',height=' + winHeight);
-}
-
 $(document).ready(function() {
   $('#win a').jqSocialSharer()
 
@@ -416,10 +410,19 @@ var clearGame = function() {
 }
 
 var newGame = function() {
+  var url = window.URL
+
   clearGame()
   // $('.difficulty').css('display', 'inline')
 
-var template = '<div class="game-wrapper"><div id="win"><img id="win-img" src="img/win.png"><a href="#"><img id="facebook" class="share" src="img/facebook.png"></a><a href="#"><img id="twitter" class="share" src="img/twitter.png"></a><img class="share" id="share-text" src="img/share.png"></div><div class="text-wrapper"><p id="easy-text">Find the four measures from <em>Stairway to Heaven</em> and assemble them in order below. The other four measures come from Spirit’s <em>Taurus</em>. Double-click each bar to hear the piper lead us to reason. Everything still turns to gold when each measure is in the correct spot.</p><p id="medium-text">Find the four measures from Led Zeppelin’s song and assemble them in order below. Double-click on each bar—if you listen very hard, the tune will come to you at last. No hints from the answer field.</p><p id="hard-text">To be a rock and not to roll. This time there is no music to help and no hints from the answer field, guitar hero. Find the four measures from <em>Stairway to Heaven</em> by reading the notes and assemble them in order below.</p></div><div id="pile"><div class="measure-row top-row"></div><div class="measure-row bottom-row"></div></div><div class="drop-wrapper"><div id="drop" class="two-thirds column content"></div></div><div class="game-button one-third column"><a href="#" id="submit"><img src="img/submit.png"></a><a href="#" id="play"><img src="img/play.png"></a><a href="#" id="answer"><img src="img/reveal.png"></a><a href="#" id="reset"><img src="img/reset.png"></a><a href="#" id="newgame"><img src="img/newgame.png"></a></div></div>'
+var template = '<div class="game-wrapper"><div id="win"><img id="win-img" src="img/win.png">'
+
+template+= '<img id="facebook" class="share" src="img/facebook.png"></a><a href="#">'
+
+template += "<a href=\"javascript:(function(){window.twttr=window.twttr||{};var D=550,A=450,C=screen.height,B=screen.width,H=Math.round((B\/2)-(D\/2)),G=0,F=document,E;if(C>A){G=Math.round((C\/2)-(A\/2))}window.twttr.shareWin=window.open('http:\/\/twitter.com\/share','','left='+H+',top='+G+',width='+D+',height='+A+',personalbar=0,toolbar=0,scrollbars=1,resizable=1');E=F.createElement('script');E.src='http:\/\/platform.twitter.com\/bookmarklets\/share.js?v=1';F.getElementsByTagName('head')[0].appendChild(E)}());\"><img src=\"img\/twitter.png\"><\/a>"
+
+
+template += '<img class="share" id="share-text" src="img/share.png"></div><div class="text-wrapper"><p id="easy-text">Find the four measures from <em>Stairway to Heaven</em> and assemble them in order below. The other four measures come from Spirit’s <em>Taurus</em>. Double-click each bar to hear the piper lead us to reason. Everything still turns to gold when each measure is in the correct spot.</p><p id="medium-text">Find the four measures from Led Zeppelin’s song and assemble them in order below. Double-click on each bar—if you listen very hard, the tune will come to you at last. No hints from the answer field.</p><p id="hard-text">To be a rock and not to roll. This time there is no music to help and no hints from the answer field, guitar hero. Find the four measures from <em>Stairway to Heaven</em> by reading the notes and assemble them in order below.</p></div><div id="pile"><div class="measure-row top-row"></div><div class="measure-row bottom-row"></div></div><div class="drop-wrapper"><div id="drop" class="two-thirds column content"></div></div><div class="game-button one-third column"><a href="#" id="submit"><img src="img/submit.png"></a><a href="#" id="play"><img src="img/play.png"></a><a href="#" id="answer"><img src="img/reveal.png"></a><a href="#" id="reset"><img src="img/reset.png"></a><a href="#" id="newgame"><img src="img/newgame.png"></a></div></div>'
 
 
 
