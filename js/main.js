@@ -313,8 +313,10 @@ var createGame = function(difficulty) {
       opacity: 1
     })
     setTimeout(function() {
-      $(window).one('click', function() {
+      $(window).on('click', function(event) {
+        if(event.target != $('#facebook')[0] && event.target !=$('#twitter')[0]){
         $('#win').css('display', 'none')
+      }
       })
     }, 1000)
 
