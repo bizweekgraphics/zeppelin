@@ -87,6 +87,7 @@ var createGame = function(difficulty) {
     $(appendEl).append(el)
 
     el.data('measure', measure)
+    el.data('dragLock', 'false')
 
     if(difficulty !='hard'){
       el.dblclick(function() {
@@ -109,11 +110,13 @@ var createGame = function(difficulty) {
   $('.drag-item').draggable({
     stack: '#pile div',
     start: function(event, ui) {
+      $(this).data('dragLock', 'false')
       var source = $(this).data('measure')
       $(this).children().first().attr('src', 'img/white/' + source + '.png')
     },
     stop: function(event, ui) {
-          if($(this).data('dragLock') === 'false') {
+      if($(this).data('dragLock') === 'false') {
+      var source = $(this).data('measure')
       $(this).children().first().attr('src', 'img/' + source + '.png')
       }
     },
@@ -146,6 +149,7 @@ var createGame = function(difficulty) {
         } else {
           $(this).addClass('drop-hover')
         }
+        var source = ui.draggable.data('measure')
         $(this).data('dragLock', 'false')
         ui.draggable.children().first().attr('src', 'img/' + source + '.png')
       },
