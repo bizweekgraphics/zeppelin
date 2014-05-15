@@ -132,7 +132,18 @@ var createGame = function(difficulty) {
         left: 0
       }
       return !event;
-    }
+    },
+    drag: function(event, ui) {
+        var audioEl = findAudioEl(0)
+        var audioEl2 = findAudioEl(1)
+        var audioEl3 = findAudioEl(2)
+        var audioEl4 = findAudioEl(3)
+        if(audioEl && audioEl2 && audioEl3 && audioEl4) {
+          $('.drop').droppable('disable')
+        } else {
+          $('.drop').droppable('enable')
+        }
+      }
   })
 
   var dropEvent = function(event, ui) {
@@ -166,7 +177,7 @@ var createGame = function(difficulty) {
         var source = ui.draggable.data('measure')
         $(this).data('dragLock', 'false')
         ui.draggable.children().first().attr('src', 'img/' + source + '.png')
-      }   
+      },
     });    
   } else {
     $('.drop').droppable({
@@ -268,8 +279,8 @@ var createGame = function(difficulty) {
   })
 
   $('#answer').click(function(event) {
+    $('.drop').droppable('disable')
     event.preventDefault()
-
     reset()
 
     var findElem = function(number) {
@@ -320,6 +331,7 @@ var createGame = function(difficulty) {
   }
 
   $('#reset').click(function(event) {
+    $('.drop').droppable('enable')
     event.preventDefault()
     reset()
   })
