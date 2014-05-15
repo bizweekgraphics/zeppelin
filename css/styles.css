@@ -63,7 +63,7 @@ body {
   height: 125px;
   z-index: 10000;
   font-family: 'kashimir';
-  text-align: center;
+  /*text-align: center;*/
   font-size: 3em;
   background: black;
   border: 2px solid #333;
@@ -74,6 +74,43 @@ body {
   -webkit-box-shadow: .3em .3em .5em rgba(0, 0, 0, .8);
   box-shadow: .3em .3em .5em rgba(0, 0, 0, .8);*/
   padding: 20px;
+}
+
+#win-img {
+  margin-top: .1em;
+  height: 160px;
+  width: 317px;
+}
+
+.share {
+  display: block;
+  position: absolute;
+  left: 395px;
+  -webkit-transition: all .25s ease-in-out;
+  -moz-transition: all .25s ease-in-out;
+  -ms-transition: all .25s ease-in-out;
+  -o-transition: all .25s ease-in-out;
+  transition: all .25s ease-in-out;
+}
+
+#facebook {
+  top: 55px;
+}
+
+.share:hover {
+  opacity: .5;
+}
+
+#twitter {
+  top: 120px;
+}
+
+#share-text {
+  top: 25px;
+}
+
+#share-text:hover {
+  opacity: 1;
 }
 
 /*.column{ 

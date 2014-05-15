@@ -5,23 +5,14 @@ var winningObject = {
   4: "stairway4"
 }
 
+function fbShare(url, title, descr, image, winWidth, winHeight) {
+    var winTop = (screen.height / 2) - (winHeight / 2);
+    var winLeft = (screen.width / 2) - (winWidth / 2);
+    window.open('http://www.facebook.com/sharer.php?s=100&p[title]=' + title + '&p[summary]=' + descr + '&p[url]=' + url + '&p[images][0]=' + image, 'sharer', 'top=' + winTop + ',left=' + winLeft + ',toolbar=0,status=0,width=' + winWidth + ',height=' + winHeight);
+}
+
 $(document).ready(function() {
-  $('.popup').click(function(event) {
-    var width  = 575,
-        height = 400,
-        left   = ($(window).width()  - width)  / 2,
-        top    = ($(window).height() - height) / 2,
-        url    = this.href,
-        opts   = 'status=1' +
-                 ',width='  + width  +
-                 ',height=' + height +
-                 ',top='    + top    +
-                 ',left='   + left;
-    
-    window.open(url, 'twitter', opts);
- 
-    return false;
-  });
+  $('#win a').jqSocialSharer()
 
   $('body').smoothScroll({
     preventDefault: false
@@ -302,17 +293,16 @@ var createGame = function(difficulty) {
       4: $(audioEl4).data('measure')
     }
     if (JSON.stringify(checkObject) === JSON.stringify(winningObject)) {
-      $('#win img').attr('src', 'img/win.png')
-      $('#win').append('<a class="twitter popup" href="http://twitter.com/share">Tweet</a>')
+      $('#win img').first().attr('src', 'img/win.png')
     } else {
-      $('#win img').attr('src', 'img/lose.png')
+      $('#win img').first().attr('src', 'img/lose.png')
     }
     $('#win').show();
     $('#win').animate({
-      left: '270px',
+      left: '235px',
       top: '1200px',
-      width: '400px',
-      height: '130px',
+      width: '450px',
+      height: '175px',
       opacity: 1
     })
     setTimeout(function() {
@@ -429,29 +419,7 @@ var newGame = function() {
   clearGame()
   // $('.difficulty').css('display', 'inline')
 
-  var template="";
-  template += "    <div class=\"game-wrapper\">";
-  template += "    <div id=\"win\"><img src=\"img\/win.png\"><\/div>";
-  template += "      <div class=\"text-wrapper\">";
-  template += "        <p id=\"easy-text\">Find the four measures from <em>Stairway to Heaven<\/em> and assemble them in order below. The other four measures come from Spirit’s <em>Taurus<\/em>. Double-click each bar to hear the piper lead us to reason. Everything still turns to gold when each measure is in the correct spot.<\/p>";
-  template += "        <p id=\"medium-text\">Find the four measures from Led Zeppelin’s song and assemble them in order below. Double-click on each bar—if you listen very hard, the tune will come to you at last. No hints from the answer field.<\/p>";
-  template += "        <p id=\"hard-text\">To be a rock and not to roll. This time there is no music to help and no hints from the answer field, guitar hero. Find the four measures from <em>Stairway to Heaven<\/em> by reading the notes and assemble them in order below.<\/p>";
-  template += "      <\/div>";
-  template += "      <div id=\"pile\">";
-  template += "        <div class=\"measure-row top-row\"><\/div>";
-  template += "        <div class=\"measure-row bottom-row\"><\/div>";
-  template += "      <\/div>";
-  template += "      <div class=\"drop-wrapper\">";
-  template += "        <div id=\"drop\" class=\"two-thirds column content\"><\/div>";
-  template += "      <\/div>";
-  template += "      <div class=\"game-button one-third column\">";
-  template += "        <a href=\"#\" id=\"submit\"><img src=\"img\/submit.png\"><\/a>";
-  template += "        <a href=\"#\" id=\"play\"><img src=\"img\/play.png\"><\/a>";
-  template += "        <a href=\"#\" id=\"answer\"><img src=\"img\/reveal.png\"><\/a>";
-  template += "        <a href=\"#\" id=\"reset\"><img src=\"img\/reset.png\"><\/a>";
-  template += "        <a href=\"#\" id=\"newgame\"><img src=\"img\/newgame.png\"><\/a>";
-  template += "      <\/div>";
-  template += "    <\/div>";
+var template = '<div class="game-wrapper"><div id="win"><img id="win-img" src="img/win.png"><a href="#"><img id="facebook" class="share" src="img/facebook.png"></a><a href="#"><img id="twitter" class="share" src="img/twitter.png"></a><img class="share" id="share-text" src="img/share.png"></div><div class="text-wrapper"><p id="easy-text">Find the four measures from <em>Stairway to Heaven</em> and assemble them in order below. The other four measures come from Spirit’s <em>Taurus</em>. Double-click each bar to hear the piper lead us to reason. Everything still turns to gold when each measure is in the correct spot.</p><p id="medium-text">Find the four measures from Led Zeppelin’s song and assemble them in order below. Double-click on each bar—if you listen very hard, the tune will come to you at last. No hints from the answer field.</p><p id="hard-text">To be a rock and not to roll. This time there is no music to help and no hints from the answer field, guitar hero. Find the four measures from <em>Stairway to Heaven</em> by reading the notes and assemble them in order below.</p></div><div id="pile"><div class="measure-row top-row"></div><div class="measure-row bottom-row"></div></div><div class="drop-wrapper"><div id="drop" class="two-thirds column content"></div></div><div class="game-button one-third column"><a href="#" id="submit"><img src="img/submit.png"></a><a href="#" id="play"><img src="img/play.png"></a><a href="#" id="answer"><img src="img/reveal.png"></a><a href="#" id="reset"><img src="img/reset.png"></a><a href="#" id="newgame"><img src="img/newgame.png"></a></div></div>'
 
 
 
@@ -460,10 +428,6 @@ var newGame = function() {
 }
 
 
-
-// https://www.facebook.com/sharer/sharer.php?u=www.bizweekgraphics.com/zeppelin
-
-  
 
 
 
