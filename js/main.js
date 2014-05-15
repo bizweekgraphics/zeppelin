@@ -104,9 +104,9 @@ var createGame = function(difficulty) {
     if(difficulty !='hard'){
       el.dblclick(function() {
       $('audio').each(function(index,audio) {
+        audio.pause()
+        audio.currentTime = 0
         var audio = cloneAudio(audio)
-        // audio.pause()
-        // audio.currentTime = 0
       })
         this.children[1].play()
       })      
