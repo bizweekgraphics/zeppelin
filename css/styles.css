@@ -283,6 +283,7 @@ audio {
 
 .game-button {
   text-align: center;
+  margin-bottom: 4em;
 }
 
 .game-button a {

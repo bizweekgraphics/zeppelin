@@ -104,8 +104,9 @@ var createGame = function(difficulty) {
     if(difficulty !='hard'){
       el.dblclick(function() {
       $('audio').each(function(index,audio) {
-        audio.pause()
-        audio.currentTime = 0
+        var audio = cloneAudio(audio)
+        // audio.pause()
+        // audio.currentTime = 0
       })
         this.children[1].play()
       })      
@@ -233,6 +234,11 @@ var createGame = function(difficulty) {
     }
   }
 
+    var cloneAudio = function(node) {
+      var oldElement = node
+      var newElement = oldElement.cloneNode(true)
+      oldElement.parentNode.replaceChild(newElement, oldElement)
+    }
 
   $('#play').click(function(event) {
     event.preventDefault()
@@ -241,12 +247,6 @@ var createGame = function(difficulty) {
     var audioEl2 = findAudioEl(1)
     var audioEl3 = findAudioEl(2)
     var audioEl4 = findAudioEl(3)
-
-    var cloneAudio = function(node) {
-      var oldElement = node
-      var newElement = oldElement.cloneNode(true)
-      oldElement.parentNode.replaceChild(newElement, oldElement)
-    }
 
     var setAudioListener = function(elem, elem2) {
       var audio = $(elem).children()[1]
