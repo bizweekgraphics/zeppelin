@@ -60,7 +60,7 @@ $(document).ready(function() {
     $(this).css('color', 'red')
     newGame()
     $('.game-wrapper').fadeIn('slow')
-    // $('#play').css('display', 'none')
+    $('#play').css('display', 'none')
     difficulty = 'hard'
     createGame(difficulty)
   })
@@ -302,6 +302,36 @@ var createGame = function(difficulty) {
         $('#win').css('display', 'none')
       })
     }, 1000)
+
+    if(difficulty === 'hard') {
+          var cloneAudio = function(node) {
+      var oldElement = node
+      var newElement = oldElement.cloneNode(true)
+      oldElement.parentNode.replaceChild(newElement, oldElement)
+    }
+
+    var setAudioListener = function(elem, elem2) {
+      var audio = $(elem).children()[1]
+      audio.addEventListener('ended', function() {
+        $(elem2).children()[1].play()
+        cloneAudio($(audio)[0])
+      })
+    }
+
+    if(audioEl && audioEl2) {
+      setAudioListener(audioEl, audioEl2)
+    }
+
+    if(audioEl2 && audioEl3) {
+      setAudioListener(audioEl2, audioEl3)
+    }
+
+    if(audioEl3 && audioEl4) {
+      setAudioListener(audioEl3, audioEl4)
+    }
+
+    $(audioEl).children()[1].play()
+    }
   })
 
   $('#answer').click(function(event) {
