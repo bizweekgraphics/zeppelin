@@ -6,6 +6,23 @@ var winningObject = {
 }
 
 $(document).ready(function() {
+  $('.popup').click(function(event) {
+    var width  = 575,
+        height = 400,
+        left   = ($(window).width()  - width)  / 2,
+        top    = ($(window).height() - height) / 2,
+        url    = this.href,
+        opts   = 'status=1' +
+                 ',width='  + width  +
+                 ',height=' + height +
+                 ',top='    + top    +
+                 ',left='   + left;
+    
+    window.open(url, 'twitter', opts);
+ 
+    return false;
+  });
+
   $('body').smoothScroll({
     preventDefault: false
   })
@@ -286,6 +303,7 @@ var createGame = function(difficulty) {
     }
     if (JSON.stringify(checkObject) === JSON.stringify(winningObject)) {
       $('#win img').attr('src', 'img/win.png')
+      $('#win').append('<a class="twitter popup" href="http://twitter.com/share">Tweet</a>')
     } else {
       $('#win img').attr('src', 'img/lose.png')
     }
@@ -416,8 +434,8 @@ var newGame = function() {
   template += "    <div id=\"win\"><img src=\"img\/win.png\"><\/div>";
   template += "      <div class=\"text-wrapper\">";
   template += "        <p id=\"easy-text\">Find the four measures from <em>Stairway to Heaven<\/em> and assemble them in order below. The other four measures come from Spirit’s <em>Taurus<\/em>. Double-click each bar to hear the piper lead us to reason. Everything still turns to gold when each measure is in the correct spot.<\/p>";
-  template += "        <p id=\"medium-text\">Your stairway lies on the whispering wind. Find the four measures from Led Zeppelin’s song and assemble them in order below. Double-click on each bar—if you listen very hard, the tune will come to you at last. No hints from the answer field.<\/p>";
-  template += "        <p id=\"hard-text\">To be a rock and not to roll. That means no music to help you this time and no hints from the answer field, guitar hero. Find the four measures from <em>Stairway to Heaven<\/em> by reading the notes and assemble them in order below.<\/p>";
+  template += "        <p id=\"medium-text\">Find the four measures from Led Zeppelin’s song and assemble them in order below. Double-click on each bar—if you listen very hard, the tune will come to you at last. No hints from the answer field.<\/p>";
+  template += "        <p id=\"hard-text\">To be a rock and not to roll. This time there is no music to help and no hints from the answer field, guitar hero. Find the four measures from <em>Stairway to Heaven<\/em> by reading the notes and assemble them in order below.<\/p>";
   template += "      <\/div>";
   template += "      <div id=\"pile\">";
   template += "        <div class=\"measure-row top-row\"><\/div>";
@@ -442,6 +460,8 @@ var newGame = function() {
 }
 
 
+
+// https://www.facebook.com/sharer/sharer.php?u=www.bizweekgraphics.com/zeppelin
 
   
 
