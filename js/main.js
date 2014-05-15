@@ -65,7 +65,7 @@ $(document).ready(function() {
     $(this).css('color', 'red')
     newGame()
     $('.game-wrapper').fadeIn('slow')
-    $('#play').css('display', 'none')
+    // $('#play').css('display', 'none')
     difficulty = 'hard'
     createGame(difficulty)
   })

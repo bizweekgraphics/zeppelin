@@ -189,6 +189,7 @@ p {
   /*width: 20%;*/
   color: white;
   cursor: move;
+  z-index: 1000;
 }
 
 .top-row {
