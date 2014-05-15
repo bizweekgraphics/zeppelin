@@ -6,7 +6,9 @@ var winningObject = {
 }
 
 $(document).ready(function() {
-  $('body').smoothScroll(300)
+  $('body').smoothScroll({
+    preventDefault: false
+  })
 
   var difficulty;
   $('#easy').mouseover(function() {
