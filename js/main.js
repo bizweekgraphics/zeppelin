@@ -116,9 +116,7 @@ var createGame = function(difficulty) {
     },
     revert: function(event, ui) {
       var source = $(this).data('measure')
-      if($(this).data('dragLock') === 'false'){
         $(this).children().first().attr('src', 'img/' + source + '.png') 
-      }
       $(this).data('uiDraggable').originalPosition = {
         top: 0,
         left: 0
@@ -128,7 +126,6 @@ var createGame = function(difficulty) {
   })
 
   var dropEvent = function(event, ui) {
-    ui.draggable.data('dragLock', 'true')
     ui.draggable.position( {of: $(this), my: 'left top', at: 'left top' })
     $(this).droppable('option', 'accept', ui.draggable);
     var source = ui.draggable.data('measure')
@@ -138,7 +135,6 @@ var createGame = function(difficulty) {
   if(difficulty === 'easy') {
     $('.drop').droppable({
       over: function(event, ui) {
-        ui.draggable.data('dragLock', true)
         if(ui.draggable.data('measure') ===$(this).data('measure')) {
           $(this).addClass('drop-hover-easy')
         } else {
@@ -147,7 +143,6 @@ var createGame = function(difficulty) {
       },
       drop: dropEvent,
       out: function(event, ui){
-        $(this).data('dragLock', 'false')        
         $(this).droppable('option', 'accept', '.drag-item');
         if(ui.draggable.data('measure') === $(this).data('measure')) {
           $(this).removeClass('drop-hover-easy')
@@ -289,6 +284,7 @@ var createGame = function(difficulty) {
   var reset = function() {
     if(difficulty === 'easy') {
       $('.drop').removeClass('drop-hover-easy')
+      $('.drop').removeClass('drop-hover')
     }
     $('.drag-item').animate({
       'left': $('.drag-item').data('left'),
