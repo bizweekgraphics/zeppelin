@@ -6,7 +6,7 @@ var winningObject = {
 }
 
 $(document).ready(function() {
-  $('html').smoothScroll(300)
+  $('body').smoothScroll(300)
 
   var difficulty;
   $('#easy').mouseover(function() {
@@ -113,10 +113,15 @@ var createGame = function(difficulty) {
       $(this).children().first().attr('src', 'img/white/' + source + '.png')
     },
     stop: function(event, ui) {
+          if($(this).data('dragLock') === 'false') {
+      $(this).children().first().attr('src', 'img/' + source + '.png')
+      }
     },
     revert: function(event, ui) {
       var source = $(this).data('measure')
-        $(this).children().first().attr('src', 'img/' + source + '.png') 
+      if($(this).data('dragLock') === 'false') {
+        $(this).children().first().attr('src', 'img/' + source + '.png')
+      }
       $(this).data('uiDraggable').originalPosition = {
         top: 0,
         left: 0
@@ -126,6 +131,7 @@ var createGame = function(difficulty) {
   })
 
   var dropEvent = function(event, ui) {
+    ui.draggable.data('dragLock', 'true')
     ui.draggable.position( {of: $(this), my: 'left top', at: 'left top' })
     $(this).droppable('option', 'accept', ui.draggable);
     var source = ui.draggable.data('measure')
@@ -140,6 +146,8 @@ var createGame = function(difficulty) {
         } else {
           $(this).addClass('drop-hover')
         }
+        $(this).data('dragLock', 'false')
+        ui.draggable.children().first().attr('src', 'img/' + source + '.png')
       },
       drop: dropEvent,
       out: function(event, ui){
@@ -149,6 +157,9 @@ var createGame = function(difficulty) {
         } else {
           $(this).removeClass('drop-hover')
         }
+        var source = ui.draggable.data('measure')
+        $(this).data('dragLock', 'false')
+        ui.draggable.children().first().attr('src', 'img/' + source + '.png')
       }   
     });    
   } else {
@@ -157,6 +168,9 @@ var createGame = function(difficulty) {
       hoverClass: 'hover',
       out: function(event, ui){
         $(this).droppable('option', 'accept', '.drag-item');
+        $(this).data('dragLock', 'false')
+        var source = ui.draggable.data('measure')
+        ui.draggable.children().first().attr('src', 'img/' + source + '.png')
       }   
     })
   }
@@ -228,7 +242,6 @@ var createGame = function(difficulty) {
       4: $(audioEl4).data('measure')
     }
     if (JSON.stringify(checkObject) === JSON.stringify(winningObject)) {
-      // alert('You win!')
       $('#win img').attr('src', 'img/win.png')
     } else {
       $('#win img').attr('src', 'img/lose.png')
@@ -268,6 +281,8 @@ var createGame = function(difficulty) {
     var elemArray = [first, second, third, fourth]
 
     elemArray.forEach(function(elem, index) {
+      var source = $(elem).data('measure')
+      $(elem).children().first().attr('src', 'img/white/' + source + '.png')
       $(elem).position({
         of: $('.drop:eq(' + index + ')'), 
         my: 'left top', 
@@ -291,6 +306,11 @@ var createGame = function(difficulty) {
       'top': $('.drag-item').data('top')
     })
     $('.drop').droppable('option', 'accept', '.drag-item')
+
+    $('.drag-item').each(function(index, item) {
+      var source = $(item).data('measure')
+      $(item).children().first().attr('src', 'img/' + source + '.png')
+    })
   }
 
   $('#reset').click(function(event) {
@@ -318,29 +338,29 @@ var newGame = function() {
   clearGame()
   // $('.difficulty').css('display', 'inline')
 
-var template="";
-template += "    <div class=\"game-wrapper\">";
-template += "    <div id=\"win\"><img src=\"img\/win.png\"><\/div>";
-template += "      <div class=\"text-wrapper\">";
-template += "        <p id=\"easy-text\">Find the four measures from <em>Stairway to Heaven<\/em> and assemble them in order below. The other four measures come from Spirit’s <em>Taurus<\/em>. Double-click each bar to hear the piper lead us to reason. Everything still turns to gold when each measure is in the correct spot.<\/p>";
-template += "        <p id=\"medium-text\">Your stairway lies on the whispering wind. Find the four measures from Led Zeppelin’s song and assemble them in order below. Double-click on each bar—if you listen very hard, the tune will come to you at last. No hints from the answer field.<\/p>";
-template += "        <p id=\"hard-text\">To be a rock and not to roll. That means no music to help you this time and no hints from the answer field, guitar hero. Find the four measures from <em>Stairway to Heaven<\/em> by reading the notes and assemble them in order below.<\/p>";
-template += "      <\/div>";
-template += "      <div id=\"pile\">";
-template += "        <div class=\"measure-row top-row\"><\/div>";
-template += "        <div class=\"measure-row bottom-row\"><\/div>";
-template += "      <\/div>";
-template += "      <div class=\"drop-wrapper\">";
-template += "        <div id=\"drop\" class=\"two-thirds column content\"><\/div>";
-template += "      <\/div>";
-template += "      <div class=\"game-button one-third column\">";
-template += "        <a href=\"#\" id=\"submit\"><img src=\"img\/submit.png\"><\/a>";
-template += "        <a href=\"#\" id=\"play\"><img src=\"img\/play.png\"><\/a>";
-template += "        <a href=\"#\" id=\"answer\"><img src=\"img\/reveal.png\"><\/a>";
-template += "        <a href=\"#\" id=\"reset\"><img src=\"img\/reset.png\"><\/a>";
-template += "        <a href=\"#\" id=\"newgame\"><img src=\"img\/newgame.png\"><\/a>";
-template += "      <\/div>";
-template += "    <\/div>";
+  var template="";
+  template += "    <div class=\"game-wrapper\">";
+  template += "    <div id=\"win\"><img src=\"img\/win.png\"><\/div>";
+  template += "      <div class=\"text-wrapper\">";
+  template += "        <p id=\"easy-text\">Find the four measures from <em>Stairway to Heaven<\/em> and assemble them in order below. The other four measures come from Spirit’s <em>Taurus<\/em>. Double-click each bar to hear the piper lead us to reason. Everything still turns to gold when each measure is in the correct spot.<\/p>";
+  template += "        <p id=\"medium-text\">Your stairway lies on the whispering wind. Find the four measures from Led Zeppelin’s song and assemble them in order below. Double-click on each bar—if you listen very hard, the tune will come to you at last. No hints from the answer field.<\/p>";
+  template += "        <p id=\"hard-text\">To be a rock and not to roll. That means no music to help you this time and no hints from the answer field, guitar hero. Find the four measures from <em>Stairway to Heaven<\/em> by reading the notes and assemble them in order below.<\/p>";
+  template += "      <\/div>";
+  template += "      <div id=\"pile\">";
+  template += "        <div class=\"measure-row top-row\"><\/div>";
+  template += "        <div class=\"measure-row bottom-row\"><\/div>";
+  template += "      <\/div>";
+  template += "      <div class=\"drop-wrapper\">";
+  template += "        <div id=\"drop\" class=\"two-thirds column content\"><\/div>";
+  template += "      <\/div>";
+  template += "      <div class=\"game-button one-third column\">";
+  template += "        <a href=\"#\" id=\"submit\"><img src=\"img\/submit.png\"><\/a>";
+  template += "        <a href=\"#\" id=\"play\"><img src=\"img\/play.png\"><\/a>";
+  template += "        <a href=\"#\" id=\"answer\"><img src=\"img\/reveal.png\"><\/a>";
+  template += "        <a href=\"#\" id=\"reset\"><img src=\"img\/reset.png\"><\/a>";
+  template += "        <a href=\"#\" id=\"newgame\"><img src=\"img\/newgame.png\"><\/a>";
+  template += "      <\/div>";
+  template += "    <\/div>";
 
 
 
