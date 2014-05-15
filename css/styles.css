@@ -57,9 +57,9 @@ body {
   color: white;
   position: absolute;
   left: 200px;
-  top: 810px;
+  top: 1200px;
   width: 0;
-  height: 0;
+  height: 125px;
   z-index: 100;
   font-family: 'kashimir';
   text-align: center;
@@ -97,6 +97,11 @@ body {
 :focus {outline:none;}
 ::-moz-focus-inner {border:0;}
 
+#header {
+  margin-bottom: 1em;
+  color: white;
+}
+
 p {
   font-family: helvetica, arial, sans-serif;
   font-size: 1em;
@@ -110,7 +115,7 @@ p {
   color: red;
   position: absolute;
   font-size: .75em;
-  top: 810px;
+  top: 890px;
   left: 396px;
   /*left: 477px;*/
   /*left: 577px;*/
