@@ -255,7 +255,7 @@ var createGame = function(difficulty) {
       left: '270px',
       top: '1200px',
       width: '400px',
-      height: '125px',
+      height: '130px',
       opacity: 1
     })
     setTimeout(function() {
