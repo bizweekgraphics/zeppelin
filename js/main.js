@@ -303,7 +303,12 @@ var createGame = function(difficulty) {
         $('#facebook').click(function() {
     fbShare(document.URL, 'Fb Share', 'Facebook share popup', document.URL, 520, 350)
   })
-             $('#twitter').click(function(event) {
+
+
+    }
+    $('#win').show();
+
+        $('#twitter').click(function(event) {
     var width  = 575,
         height = 400,
         left   = ($(window).width()  - width)  / 2,
@@ -319,9 +324,6 @@ var createGame = function(difficulty) {
 
     return false;
   });
-
-    }
-    $('#win').show();
     $('#win').animate({
       left: '235px',
       top: '1200px',
