@@ -394,12 +394,12 @@ var createGame = function(difficulty) {
 
   $('.drag-item').data('left', 0).data('top', 0)
 
-  $('#newgame').click(function(event) {
-    event.preventDefault()
-    newGame()
-    createGame(difficulty)
-    $('.game-wrapper').fadeIn('slow')
-  })
+  // $('#newgame').click(function(event) {
+  //   event.preventDefault()
+  //   newGame()
+  //   createGame(difficulty)
+  //   $('.game-wrapper').fadeIn('slow')
+  // })
 }
 
 var clearGame = function() {
