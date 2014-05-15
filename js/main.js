@@ -138,12 +138,28 @@ var createGame = function(difficulty) {
         var audioEl2 = findAudioEl(1)
         var audioEl3 = findAudioEl(2)
         var audioEl4 = findAudioEl(3)
-        if(audioEl && audioEl2 && audioEl3 && audioEl4) {
-          $('.drop').droppable('disable')
+
+        if(audioEl) {
+          $('.drop:eq(0)').droppable('disable')
         } else {
-          $('.drop').droppable('enable')
+          $('.drop:eq(0)').droppable('enable')
         }
-      }
+        if(audioEl2) {
+          $('.drop:eq(1)').droppable('disable')
+        } else {
+          $('.drop:eq(1)').droppable('enable')
+        }
+        if(audioEl3) {
+          $('.drop:eq(2)').droppable('disable')
+        } else {
+          $('.drop:eq(2)').droppable('enable')
+        }
+        if(audioEl4) {
+          $('.drop:eq(3)').droppable('disable')
+        } else {
+          $('.drop:eq(3)').droppable('enable')
+        }
+    }
   })
 
   var dropEvent = function(event, ui) {
