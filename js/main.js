@@ -72,6 +72,7 @@ $(document).ready(function() {
 })
 
 var createGame = function(difficulty) {
+  $('#newgame').hide()
   $('#' + difficulty + '-text').css('display', 'block')
 
   var measureArray = ['stairway1', 'stairway2', 'stairway3', 'stairway4', 'spirit1', 'spirit2', 'spirit3', 'spirit4']
@@ -359,8 +360,7 @@ var createGame = function(difficulty) {
     newGame()
     createGame(difficulty)
     $('.game-wrapper').fadeIn('slow')
-
-})
+  })
 }
 
 var clearGame = function() {
