@@ -316,6 +316,7 @@ var createGame = function(difficulty) {
       $(window).on('click', function(event) {
         if(event.target != $('#facebook')[0] && event.target !=$('#twitter')[0]){
         $('#win').css('display', 'none')
+        $(window).off('click')
       }
       })
     }, 1000)
