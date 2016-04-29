@@ -6,28 +6,50 @@
   <title>Zeppelin</title>
 </head>
 <body>
-  <button class="difficulty" id="easy">Easy</button>
-  <button class="difficulty" id="medium">Medium</button>
-  <button class="difficulty" id="hard">Hard</button>
-
-  <div class="game-wrapper">
-    <p>4 measures are from Stairway to Heaven, 4 are from Spirit. Identify the 4 measures from Stairway and drag them into the drop boxes in the right order</p>
-    <p id="listen">Double click image to listen to measure</p>
-    <div id="pile">
-      <div class="top-row"></div>
-      <div class="bottom-row"></div>
+  <div class="container">
+  <img src="img/head.png">
+  <div class="wrapper">
+    <div class="difficulty-wrapper">
+      <p id="header">There are three paths you can go by. Choose a difficulty and test your ability </br> to distinguish Led Zeppelin’s legendary hit from Spirit’s forgotten tune.</p>
+      <a href="#easy-text" class="difficulty" id="easy">Easy</a><span>,</span>
+      <a href="#medium-text" class="difficulty" id="medium">Medium</a><span>, or </span>
+      <a href="#hard-text" class="difficulty" id="hard">Hard</a>
+      <span id="arrow">&#x25B2;</span>
     </div>
-    <div id="drop" class="content"></div>
-    <button id="submit">Submit</button>
-    <button id="play">Play</button>
-    <button id="answer">Show Answer</button>
-    <button id="reset">Reset</button>
+
+
+
+    <div class="game-wrapper">
+    <div id="win"><img src="img/win.png"><div>
+      <div class="text-wrapper">
+        <p id="easy-text">Find the four measures from <em>Stairway to Heaven</em> and assemble them in order below. The other four measures come from Spirit’s <em>Taurus</em>. Double-click each bar to hear the piper lead us to reason. Everything still turns to gold when each measure is in the correct spot.</p>
+        <p id="medium-text">Find the four measures from Led Zeppelin’s song and assemble them in order below. Double-click on each bar—if you listen very hard, the tune will come to you at last. No hints from the answer field.</p>
+        <p id="hard-text">To be a rock and not to roll. This time there is no music to help and no hints from the answer field, guitar hero. Find the four measures from <em>Stairway to Heaven</em> by reading the notes and assemble them in order below.</p>
+      </div>
+      <div id="pile">
+        <div class="measure-row top-row"></div>
+        <div class="measure-row bottom-row"></div>
+      </div>
+      <div class="drop-wrapper">
+        <div id="drop" class="two-thirds column content"></div>
+      </div>
+      <div class="game-button one-third column">
+        <a href="#" id="submit"><img src="img/submit.png"></a>
+        <a href="#" id="play"><img src="img/play.png"></a>
+        <a href="#" id="answer"><img src="img/reveal.png"></a>
+        <a href="#" id="reset"><img src="img/reset.png"></a>
+        <a href="#" id="newgame"><img src="img/newgame.png"></a>
+      </div>
+    </div>
+  </div>
   </div>
 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
   <script src="http://cdn.jsdelivr.net/jquery.ui.touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+  <script src="js/jquery.socialshare.js"></script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
+  <script src="js/jquery.smoothscroll.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

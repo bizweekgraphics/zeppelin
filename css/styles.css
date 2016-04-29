@@ -1,32 +1,289 @@
-body {
-  background: #f6ea9c;
+@font-face
+{
+font-family: kashimir;
+src: url(../fonts/kashimir.ttf);
+}
+
+@font-face {
+  font-family: 'BloombergLBold';
+    src: url("http://www.businessweek.com/assets/type/bloombergl_heavy.eot?#iefix") format('embedded-opentype'),
+       url('http://www.businessweek.com/assets/type/bloombergl_heavy.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+  font-family:'BWHaasHead';
+  src: url('http://www.businessweek.com/assets/type/hinted/haas/bwhaasgroteskhead-95black.eot?#iefix') format('eot'),
+     url('http://www.businessweek.com/assets/type/hinted/haas/bwhaasgroteskhead-95black.woff') format('woff'),
+     url('http://www.businessweek.com/assets/type/haas/bwhaasgroteskhead-95black.ttf') format('truetype');
+
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: normal;
+}
+@font-face {
+  font-family:'BWHaasHead75Bold';
+  src: url('http://www.businessweek.com/assets/type/hinted/haas75/bwhaasgroteskhead-75bold.eot?#iefix') format('eot'),
+     url('http://www.businessweek.com/assets/type/hinted/haas75/bwhaasgroteskhead-75bold.woff') format('woff'),
+     url('http://www.businessweek.com/assets/type/haas75/bwhaasgrotesktext-75bold.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: normal;
+}
+@font-face {
+  font-family:'BWHaasRegular';
+  src: url('http://www.businessweek.com/assets/web_fonts/bwhaasgroteskhead-65medium.eot?#iefix') format('eot'),
+     url('http://www.businessweek.com/assets/web_fonts/bwhaasgroteskhead-65medium.woff') format('woff'),
+     url('http://www.businessweek.com/assets/web_fonts/bwhaasgrotesktext-65medium.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: normal;
 }
 
 
-.game-wrapper {
+body {
+  background: black;
+  margin: 0px;
+}
+
+.container { 
+  /*position: relative; */
+  width: 970px; 
+  /*margin: 0 auto; */
+  padding: 0; 
+}
+
+#win {
+  display: none;
+  color: white;
+  position: absolute;
+  left: 200px;
+  top: 1200px;
+  width: 0;
+  height: 125px;
+  z-index: 10000;
+  font-family: 'kashimir';
+  /*text-align: center;*/
+  font-size: 3em;
+  background: black;
+  border: 2px solid #333;
+/*  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  -moz-box-shadow: .3em .3em .5em rgba(0, 0, 0, .8);
+  -webkit-box-shadow: .3em .3em .5em rgba(0, 0, 0, .8);
+  box-shadow: .3em .3em .5em rgba(0, 0, 0, .8);*/
+  padding: 20px;
+}
+
+#win-img {
+  margin-top: .1em;
+  height: 160px;
+  width: 317px;
+}
+
+.share {
+  display: block;
+  position: absolute;
+  left: 395px;
+  -webkit-transition: all .25s ease-in-out;
+  -moz-transition: all .25s ease-in-out;
+  -ms-transition: all .25s ease-in-out;
+  -o-transition: all .25s ease-in-out;
+  transition: all .25s ease-in-out;
+}
+
+#facebook {
+  top: 55px;
+}
+
+.share:hover {
+  opacity: .5;
+}
+
+#twitter {
+  top: 120px;
+}
+
+#share-text {
+  top: 25px;
+}
+
+#share-text:hover {
+  opacity: 1;
+}
+
+/*.column{ 
+  float: left;
+  display: inline;
+  margin-left: 10px;
+  margin-right: 0px; 
+}*/
+
+/*.container .one-third.column { 
+  width: 100px; 
+}
+
+.container .two-thirds.column { 
+  width: 800px; 
+}*/
+
+.wrapper {
   width: 970px;
+}
+
+:focus {outline:none;}
+::-moz-focus-inner {border:0;}
+
+#header {
+  margin-bottom: 1em;
+  color: white;
+}
+
+p {
+  font-family: helvetica, arial, sans-serif;
+  font-size: 1em;
+  font-family: 'BWHaasRegular';
+  color: red;
+  margin: 0em 1em 0em 1em;
+}
+
+#arrow {
+  /*display: none;*/
+  color: red;
+  position: absolute;
+  font-size: .75em;
+  top: 882px;
+  left: 388px;
+  /*left: 477px;*/
+  /*left: 577px;*/
+}
+
+#easy {
+  color: red;
+}
+
+.game-wrapper {
+  display: none;
+  width: 970px;
+}
+
+.text-wrapper {
+  width: 800px;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.difficulty-wrapper {
+  width: 970px;
+  font-size: 1.5em;
+  display: block;
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.difficulty {
+  display: inline;
+  margin: 0 auto;
+  text-align: center;
+  font-family: 'BWHaasRegular';
+  color: white;
+/*  margin-bottom: 2em;
+  border: none;
+  width: 25%;
+  font-size: 2em;
+  padding: 1.5em 1em 1.5em 1em;
+  font-family: 'kashimir';
+  color: white;
+  background: black;*/
+/*  -webkit-transition: all .25s ease-in-out;
+  -moz-transition: all .25s ease-in-out;
+  -ms-transition: all .25s ease-in-out;
+  -o-transition: all .25s ease-in-out;
+  transition: all .25s ease-in-out;*/
+}
+
+
+/*.difficulty:first-child {
+  margin-top: 2em;
+}*/
+
+.difficulty-wrapper span {
+  font-family: 'BWHaasRegular';
+  color: white;
+}
+
+.difficulty:hover {
+  color: red;
+  cursor: pointer;
+}
+
+.text-wrapper p {
   display: none;
 }
 
 .drag-item {
   display: inline-block;
-  margin: 1em;
-  height: 5em;
-  width: 20%;
+  margin: .77em;
+  height: 174px;
+  width: 194px;
+  /*width: 20%;*/
   color: white;
   cursor: move;
+  z-index: 1000;
+}
+
+.top-row {
+  margin-top: 2em;
+}
+
+#pile {
+  margin-bottom: 1em;
+}
+
+.drop-wrapper {
+  width: 850px;
+  height: 174px;
+  background: url(../img/tab.png);
+  background-repeat: none;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 2em;
 }
 
 #drop {
-  margin-left: 2em;
+/*  display: block;
+  margin: 0 auto;
+  width: 790px;
+  text-align: right;*/
+  /*float: left;*/
+  /*display: inline;*/
+  width: 776px; 
+  height: 174px;
+  /*background: blue;*/
+  float: right;
+
 }
 
 .drop {
+  font-family: 'kashimir';
   display: inline-block;
   width: 194px;
   height: 174px;
-  background: lightgrey;
+  background: black;
   text-align: center;
+  color: white;
+  /*border: 1px solid white;*/
+  opacity: 0;
+}
+
+
+
+.measure-row {
+  text-align: center;
+  margin-bottom: 0px;
+  width: 970px;
 }
 
 .hover {
@@ -34,20 +291,68 @@ body {
 }
 
 .drop-hover {
-  background: pink;
+  background: red;
+  opacity: 1;
 }
 
 .drop-hover-easy {
-  background: lightgreen;
+  background: #ccb93d;
+  opacity: 1;
 }
-
 
 audio {
   display: none;
 }
 
-img {
-  width: 100%;
-  height: auto;
+.drag-item img {
+  width: 194px;
+  height: 174px;
 }
 
+/*.game-button {
+  float: left;
+  display: inline;
+  width: 100px;
+  text-align: center;
+  margin-left: 1.5em;
+  margin-top: .5em !important;
+}*/
+
+.game-button {
+  text-align: center;
+  margin-bottom: 4em;
+}
+
+.game-button a {
+  /*width: 100px; */
+  display: inline;
+  cursor: pointer;
+  font-family: 'kashimir';
+  border: none;
+  background: black;
+  color: white;
+  font-size: 1.5em;
+  margin-right: 1em;
+/*  -webkit-transition: all .25s ease-in-out;
+  -moz-transition: all .25s ease-in-out;
+  -ms-transition: all .25s ease-in-out;
+  -o-transition: all .25s ease-in-out;
+  transition: all .25s ease-in-out;*/
+}
+
+.game-button img {
+  -webkit-transition: all .25s ease-in-out;
+  -moz-transition: all .25s ease-in-out;
+  -ms-transition: all .25s ease-in-out;
+  -o-transition: all .25s ease-in-out;
+  transition: all .25s ease-in-out;
+}
+
+.game-button img:hover {
+  opacity: .5;
+}
+
+.game-button button:hover {
+  opacity: .5;
+
+}
