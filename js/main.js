@@ -6,9 +6,9 @@ var winningObject = {
 }
 
 function fbShare(url, title, descr, image, winWidth, winHeight) {
-    var winTop = (screen.height / 2) - (winHeight / 2);
-    var winLeft = (screen.width / 2) - (winWidth / 2);
-    window.open('http://www.facebook.com/sharer.php?s=100&p[title]=' + title + '&p[summary]=' + descr + '&p[url]=' + 'http://www.businessweek.com/articles/2014-05-15/the-stairway-to-heaven-game-did-led-zeppelin-steal-the-greatest-song-opening-in-rock-history' + '&p[images][0]=' + image, 'sharer', 'top=' + winTop + ',left=' + winLeft + ',toolbar=0,status=0,width=' + winWidth + ',height=' + winHeight);
+  var winTop = (screen.height / 2) - (winHeight / 2);
+  var winLeft = (screen.width / 2) - (winWidth / 2);
+  window.open('http://www.facebook.com/sharer.php?s=100&p[title]=' + title + '&p[summary]=' + descr + '&p[url]=' + 'http://www.businessweek.com/articles/2014-05-15/the-stairway-to-heaven-game-did-led-zeppelin-steal-the-greatest-song-opening-in-rock-history' + '&p[images][0]=' + image, 'sharer', 'top=' + winTop + ',left=' + winLeft + ',toolbar=0,status=0,width=' + winWidth + ',height=' + winHeight);
 }
 
 $(document).ready(function() {
@@ -33,7 +33,7 @@ $(document).ready(function() {
     createGame(difficulty);
     $('.game-wrapper').fadeIn('slow');
   }
- 
+  
 })
 
 var createGame = function(difficulty) {
@@ -58,11 +58,11 @@ var createGame = function(difficulty) {
 
     if(difficulty !='hard'){
       el.dblclick(function() {
-      $('audio').each(function(index,audio) {
-        audio.pause()
-        audio.currentTime = 0
-        var audio = cloneAudio(audio)
-      })
+        $('audio').each(function(index,audio) {
+          audio.pause()
+          audio.currentTime = 0
+          var audio = cloneAudio(audio)
+        })
         this.children[1].play()
       })      
     }
@@ -84,8 +84,8 @@ var createGame = function(difficulty) {
     },
     stop: function(event, ui) {
       if($(this).data('dragLock') === 'false') {
-      var source = $(this).data('measure')
-      $(this).children().first().attr('src', 'img/' + source + '.png')
+        var source = $(this).data('measure')
+        $(this).children().first().attr('src', 'img/' + source + '.png')
       }
     },
     revert: function(event, ui) {
@@ -100,31 +100,31 @@ var createGame = function(difficulty) {
       return !event;
     },
     drag: function(event, ui) {
-        var audioEl = findAudioEl(0)
-        var audioEl2 = findAudioEl(1)
-        var audioEl3 = findAudioEl(2)
-        var audioEl4 = findAudioEl(3)
+      var audioEl = findAudioEl(0)
+      var audioEl2 = findAudioEl(1)
+      var audioEl3 = findAudioEl(2)
+      var audioEl4 = findAudioEl(3)
 
-        if(audioEl) {
-          $('.drop:eq(0)').droppable('disable')
-        } else {
-          $('.drop:eq(0)').droppable('enable')
-        }
-        if(audioEl2) {
-          $('.drop:eq(1)').droppable('disable')
-        } else {
-          $('.drop:eq(1)').droppable('enable')
-        }
-        if(audioEl3) {
-          $('.drop:eq(2)').droppable('disable')
-        } else {
-          $('.drop:eq(2)').droppable('enable')
-        }
-        if(audioEl4) {
-          $('.drop:eq(3)').droppable('disable')
-        } else {
-          $('.drop:eq(3)').droppable('enable')
-        }
+      if(audioEl) {
+        $('.drop:eq(0)').droppable('disable')
+      } else {
+        $('.drop:eq(0)').droppable('enable')
+      }
+      if(audioEl2) {
+        $('.drop:eq(1)').droppable('disable')
+      } else {
+        $('.drop:eq(1)').droppable('enable')
+      }
+      if(audioEl3) {
+        $('.drop:eq(2)').droppable('disable')
+      } else {
+        $('.drop:eq(2)').droppable('enable')
+      }
+      if(audioEl4) {
+        $('.drop:eq(3)').droppable('disable')
+      } else {
+        $('.drop:eq(3)').droppable('enable')
+      }
     }
   })
 
@@ -177,23 +177,23 @@ var createGame = function(difficulty) {
   var findAudioEl = function(number) {
     try {
       return _.find($('.drag-item'), function(elem) {
-          var elem = $(elem)
-          var marginLeft = parseInt(elem.css('margin-left'))
-          var marginTop = parseInt(elem.css('margin-top'))
-          var top = Math.round(elem.position().top) + marginTop
-          var left = Math.round(elem.position().left) + marginLeft
-          return (top === Math.round($('.drop:eq(' + number + ')').position().top) && left === Math.round($('.drop:eq(' + number + ')').position().left))
+        var elem = $(elem)
+        var marginLeft = parseInt(elem.css('margin-left'))
+        var marginTop = parseInt(elem.css('margin-top'))
+        var top = Math.round(elem.position().top) + marginTop
+        var left = Math.round(elem.position().left) + marginLeft
+        return (top === Math.round($('.drop:eq(' + number + ')').position().top) && left === Math.round($('.drop:eq(' + number + ')').position().left))
       })
     } catch(e) {
       return undefined
     }
   }
 
-    var cloneAudio = function(node) {
-      var oldElement = node
-      var newElement = oldElement.cloneNode(true)
-      oldElement.parentNode.replaceChild(newElement, oldElement)
-    }
+  var cloneAudio = function(node) {
+    var oldElement = node
+    var newElement = oldElement.cloneNode(true)
+    oldElement.parentNode.replaceChild(newElement, oldElement)
+  }
 
   $('#play').click(function(event) {
     event.preventDefault()
@@ -241,35 +241,35 @@ var createGame = function(difficulty) {
     }
     if (JSON.stringify(checkObject) === JSON.stringify(winningObject)) {
       $('#win img').first().attr('src', 'img/win.png')
-        $('#facebook').click(function() {
-          fbShare(document.URL, 'Fb Share', 'Facebook share popup', document.URL, 520, 350)
+      $('#facebook').click(function() {
+        fbShare(document.URL, 'Fb Share', 'Facebook share popup', document.URL, 520, 350)
       })
     } else {
       $('#win img').first().attr('src', 'img/lose.png')
-        $('#facebook').click(function() {
-    fbShare(document.URL, 'Fb Share', 'Facebook share popup', document.URL, 520, 350)
-  })
+      $('#facebook').click(function() {
+        fbShare(document.URL, 'Fb Share', 'Facebook share popup', document.URL, 520, 350)
+      })
 
 
     }
     $('#win').show();
 
-        $('#twitter').click(function(event) {
-    var width  = 575,
-        height = 400,
-        left   = ($(window).width()  - width)  / 2,
-        top    = ($(window).height() - height) / 2,
-        url    = 'http://www.twitter.com/share?url=http://www.businessweek.com/articles/2014-05-15/the-stairway-to-heaven-game-did-led-zeppelin-steal-the-greatest-song-opening-in-rock-history',
-        opts   = 'status=1' +
-                 ',width='  + width  +
-                 ',height=' + height +
-                 ',top='    + top    +
-                 ',left='   + left;
+    $('#twitter').click(function(event) {
+      var width  = 575,
+      height = 400,
+      left   = ($(window).width()  - width)  / 2,
+      top    = ($(window).height() - height) / 2,
+      url    = 'http://www.twitter.com/share?url=http://www.businessweek.com/articles/2014-05-15/the-stairway-to-heaven-game-did-led-zeppelin-steal-the-greatest-song-opening-in-rock-history',
+      opts   = 'status=1' +
+      ',width='  + width  +
+      ',height=' + height +
+      ',top='    + top    +
+      ',left='   + left;
 
-    window.open(url, 'twitte', opts);
+      window.open(url, 'twitte', opts);
 
-    return false;
-  });
+      return false;
+    });
     $('#win').animate({
       left: '235px',
       top: '1200px',
@@ -280,40 +280,40 @@ var createGame = function(difficulty) {
     setTimeout(function() {
       $(window).on('click', function(event) {
         if(event.target != $('#facebook')[0] && event.target !=$('#twitter')[0]){
-        $('#win').css('display', 'none')
-        $(window).off('click')
-      }
+          $('#win').css('display', 'none')
+          $(window).off('click')
+        }
       })
     }, 1000)
 
     if(difficulty === 'hard') {
-          var cloneAudio = function(node) {
-      var oldElement = node
-      var newElement = oldElement.cloneNode(true)
-      oldElement.parentNode.replaceChild(newElement, oldElement)
-    }
+      var cloneAudio = function(node) {
+        var oldElement = node
+        var newElement = oldElement.cloneNode(true)
+        oldElement.parentNode.replaceChild(newElement, oldElement)
+      }
 
-    var setAudioListener = function(elem, elem2) {
-      var audio = $(elem).children()[1]
-      audio.addEventListener('ended', function() {
-        $(elem2).children()[1].play()
-        cloneAudio($(audio)[0])
-      })
-    }
+      var setAudioListener = function(elem, elem2) {
+        var audio = $(elem).children()[1]
+        audio.addEventListener('ended', function() {
+          $(elem2).children()[1].play()
+          cloneAudio($(audio)[0])
+        })
+      }
 
-    if(audioEl && audioEl2) {
-      setAudioListener(audioEl, audioEl2)
-    }
+      if(audioEl && audioEl2) {
+        setAudioListener(audioEl, audioEl2)
+      }
 
-    if(audioEl2 && audioEl3) {
-      setAudioListener(audioEl2, audioEl3)
-    }
+      if(audioEl2 && audioEl3) {
+        setAudioListener(audioEl2, audioEl3)
+      }
 
-    if(audioEl3 && audioEl4) {
-      setAudioListener(audioEl3, audioEl4)
-    }
+      if(audioEl3 && audioEl4) {
+        setAudioListener(audioEl3, audioEl4)
+      }
 
-    $(audioEl).children()[1].play()
+      $(audioEl).children()[1].play()
     }
   })
 
@@ -344,7 +344,7 @@ var createGame = function(difficulty) {
         my: 'left top', 
         at: 'left top', 
         using: function(css, calc) {
-        $(elem).animate(css, 200, 'linear')
+          $(elem).animate(css, 200, 'linear')
         }
       })      
     })
