@@ -462,7 +462,7 @@ template += '<img class="share" id="share-text" src="img/share.png"></div><div c
 
 
 
-  $('body').append(template)
+  $('.container').append(template)
 }
 
 
