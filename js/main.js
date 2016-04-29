@@ -20,77 +20,23 @@ $(document).ready(function() {
   })
 
   var difficulty;
-  $('#easy').mouseover(function() {
-    $('#arrow').css('left', '388px')
-    $('#arrow').show()
-  })
 
-  $('#medium').mouseover(function() {
-    $('#arrow').css('left', '469px')
-    $('#arrow').show()
-  })
+  d3.selectAll('.difficulty').on('click', function() { init(this.id); });
+  init('easy');
 
-  $('#hard').mouseover(function() {
-    $('#arrow').css('left', '569px')
-    $('#arrow').show()
-  })
-
-  $('#easy').click(function(event) {
-    $('.difficulty-wrapper a').unbind('mouseover')
-    $('.difficulty-wrapper a').unbind('mouseleave')
-    $('#arrow').css('left', '388px')
-    $('#arrow').show()
-    $('.difficulty-wrapper a').css('color', 'white')
-    $(this).css('color', 'red')
-    difficulty = 'easy'
-    newGame()
-    createGame(difficulty)
-    $('.game-wrapper').fadeIn('slow')
-  })
-
-  $('#medium').click(function(event) {
-    $('.difficulty-wrapper a').unbind('mouseover')
-    $('.difficulty-wrapper a').unbind('mouseleave')
-    $('#arrow').css('left', '469px')
-    $('#arrow').show()
-    $('.difficulty-wrapper a').css('color', 'white')
-    $(this).css('color', 'red')
-    newGame()
-    $('.game-wrapper').fadeIn('slow')
-    difficulty = 'medium'
-    createGame(difficulty)
-  })
-
-  $('#hard').click(function(event) {
-    $('.difficulty-wrapper a').unbind('mouseover')
-    $('.difficulty-wrapper a').unbind('mouseleave')
-    $('#arrow').css('left', '569px')
-    $('.difficulty-wrapper a').css('color', 'white')
-    $(this).css('color', 'red')
-    newGame()
-    $('.game-wrapper').fadeIn('slow')
-    $('#play').css('display', 'none')
-    difficulty = 'hard'
-    createGame(difficulty)
-  })
-
-    var init = function() {
-      $('.difficulty-wrapper a').unbind('mouseover')
-      $('.difficulty-wrapper a').unbind('mouseleave')
-      $('#arrow').css('left', '388px')
-      $('.difficulty-wrapper a').css('color', 'white')
-      $('#easy').css('color', 'red')
-      difficulty = 'easy'
-      newGame()
-      createGame(difficulty)
-      $('.game-wrapper').fadeIn('slow')
-    }
-
-    init()
+  function init(diff) {
+    difficulty = diff;
+    d3.selectAll('.difficulty').classed('selected', false);
+    d3.select('#'+difficulty).classed('selected', true);
+    newGame();
+    if(difficulty==='hard') $('#play').css('display', 'none');
+    createGame(difficulty);
+    $('.game-wrapper').fadeIn('slow');
+  }
+ 
 })
 
 var createGame = function(difficulty) {
-  $('#newgame').hide()
   $('#' + difficulty + '-text').css('display', 'block')
 
   var measureArray = ['stairway1', 'stairway2', 'stairway3', 'stairway4', 'spirit1', 'spirit2', 'spirit3', 'spirit4']
@@ -431,12 +377,6 @@ var createGame = function(difficulty) {
 
   $('.drag-item').data('left', 0).data('top', 0)
 
-  // $('#newgame').click(function(event) {
-  //   event.preventDefault()
-  //   newGame()
-  //   createGame(difficulty)
-  //   $('.game-wrapper').fadeIn('slow')
-  // })
 }
 
 var clearGame = function() {
@@ -448,26 +388,14 @@ var newGame = function() {
   var url = window.URL
 
   clearGame()
-  // $('.difficulty').css('display', 'inline')
 
-var template = '<div class="game-wrapper"><div id="win"><img id="win-img" src="img/win.png">'
+  var template = '<div class="game-wrapper"><div id="win"><img id="win-img" src="img/win.png">'
 
-template+= '<img id="facebook" class="share" src="img/facebook.png"></a><a href="#">'
+  template += '<img id="facebook" class="share" src="img/facebook.png"></a><a href="#">'
 
-template += "<a href='#'><img class='share' id='twitter' src=\"img\/twitter.png\"><\/a>"
+  template += "<a href='#'><img class='share' id='twitter' src=\"img\/twitter.png\"><\/a>"
 
-
-template += '<img class="share" id="share-text" src="img/share.png"></div><div class="text-wrapper"><p id="easy-text">Find the four measures from <em>Stairway to Heaven</em> and assemble them in order below. The other four measures come from Spirit’s <em>Taurus</em>. Double-click each bar to hear the piper lead us to reason. Everything still turns to gold when each measure is in the correct spot.</p><p id="medium-text">Find the four measures from Led Zeppelin’s song and assemble them in order below. Double-click on each bar—if you listen very hard, the tune will come to you at last. No hints from the answer field.</p><p id="hard-text">To be a rock and not to roll. This time there is no music to help and no hints from the answer field, guitar hero. Find the four measures from <em>Stairway to Heaven</em> by reading the notes and assemble them in order below.</p></div><div id="pile"><div class="measure-row top-row"></div><div class="measure-row bottom-row"></div></div><div class="drop-wrapper"><div id="drop" class="two-thirds column content"></div></div><div class="game-button one-third column"><a href="#" id="submit"><img src="img/submit.png"></a><a href="#" id="play"><img src="img/play.png"></a><a href="#" id="answer"><img src="img/reveal.png"></a><a href="#" id="reset"><img src="img/reset.png"></a><a href="#" id="newgame"><img src="img/newgame.png"></a></div></div>'
-
-
-
+  template += '<img class="share" id="share-text" src="img/share.png"></div><div class="text-wrapper"><p id="easy-text">Find the four measures from <em>Stairway to Heaven</em> and assemble them in order below. The other four measures come from Spirit’s <em>Taurus</em>. Double-click each bar to hear the piper lead us to reason. Everything still turns to gold when each measure is in the correct spot.</p><p id="medium-text">Find the four measures from Led Zeppelin’s song and assemble them in order below. Double-click on each bar—if you listen very hard, the tune will come to you at last. No hints from the answer field.</p><p id="hard-text">To be a rock and not to roll. This time there is no music to help and no hints from the answer field, guitar hero. Find the four measures from <em>Stairway to Heaven</em> by reading the notes and assemble them in order below.</p></div><div id="pile"><div class="measure-row top-row"></div><div class="measure-row bottom-row"></div></div><div class="drop-wrapper"><div id="drop" class="two-thirds column content"></div></div><div class="game-button one-third column"><a href="#" id="submit"><img src="img/submit.png"></a><a href="#" id="play"><img src="img/play.png"></a><a href="#" id="answer"><img src="img/reveal.png"></a><a href="#" id="reset"><img src="img/reset.png"></a></div></div>'
 
   $('.container').append(template)
 }
-
-
-
-
-
-
-
